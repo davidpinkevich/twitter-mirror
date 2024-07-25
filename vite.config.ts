@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import eslint from 'vite-plugin-eslint';
+import { defineConfig } from 'vite';
 import babel from 'vite-plugin-babel';
+import eslint from 'vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,6 +15,7 @@ export default defineConfig({
       pages: '/src/pages',
       styles: '/src/styles',
       utils: '/src/utils',
+      redux: '/src/redux',
     },
   },
 });

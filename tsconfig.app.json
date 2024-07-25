@@ -29,7 +29,8 @@
       "constants/*": ["constants/*"],
       "pages/*": ["pages/*"],
       "styles/*": ["styles/*"],
-      "utils/*": ["utils/*"]
+      "utils/*": ["utils/*"],
+      "redux/*": ["redux/*"]
     }
   },
   "include": ["src"]
