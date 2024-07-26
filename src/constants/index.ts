@@ -1,4 +1,4 @@
-import { Paths } from './paths';
 import { ERRORS } from './errorInfoForm';
+import { Paths } from './paths';
 
 export { Paths, ERRORS };

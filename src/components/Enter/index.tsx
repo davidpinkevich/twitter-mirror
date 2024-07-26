@@ -1,22 +1,20 @@
-import { signInWithPopup } from 'firebase/auth';
 import { Link } from 'react-router-dom';
-
-import googleIcon from 'assets/icons/google.svg';
-import twitterIcon from 'assets/icons/twitter.svg';
-
-import { Paths } from 'constants/paths';
-
-import { auth, googleProvider } from 'services/firebase';
 
 import {
   StyledEnter,
+  StyledEnterBtn,
+  StyledEnterH2,
+  StyledEnterImgGoogle,
+  StyledEnterP,
   StyledEnterTitle,
   StyledEnterTitleImg,
-  StyledEnterImgGoogle,
-  StyledEnterH2,
-  StyledEnterP,
-  StyledEnterBtn,
 } from './styled';
+
+import googleIcon from 'assets/icons/google.svg';
+import twitterIcon from 'assets/icons/twitter.svg';
+import { Paths } from 'constants/paths';
+import { signInWithPopup } from 'firebase/auth';
+import { auth, googleProvider } from 'services/firebase';
 
 const Enter: React.FC = () => {
   const handleGoogle = () => {

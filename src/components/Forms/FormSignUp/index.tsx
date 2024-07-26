@@ -1,24 +1,22 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
-import twitter from 'assets/icons/twitter.svg';
-
-import { Paths, ERRORS } from 'constants/index';
-
-import { type TypesFormSignUp } from 'types';
-
 import {
-  StyledFormSignUpWrapper,
+  StyledError,
   StyledFormSignUp,
-  StyledInput,
-  StyledFormSignUpLink,
-  StyledFormSignUpImg,
-  StyledFormSignUpTitle,
   StyledFormSignUpBtn,
   StyledFormSignUpH3,
+  StyledFormSignUpImg,
   StyledFormSignUpInfo,
-  StyledError,
+  StyledFormSignUpLink,
+  StyledFormSignUpTitle,
+  StyledFormSignUpWrapper,
+  StyledInput,
 } from './styled';
+
+import twitter from 'assets/icons/twitter.svg';
+import { ERRORS,Paths } from 'constants/index';
+import { type TypesFormSignUp } from 'types';
 
 const FormSignUp = ({
   createUser,
