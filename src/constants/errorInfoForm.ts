@@ -14,6 +14,11 @@ const ERRORS = {
     required: 'This field is required',
     pattern: 'Please enter your real email',
   },
+  password: {
+    required: 'This field is required',
+    minLength: 'Password at least 6 characters',
+    pattern: "Don't use spaces. Must have at least 2 capital letters and 1 number",
+  },
 };
 
 export { ERRORS };
