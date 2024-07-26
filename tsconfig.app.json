@@ -21,7 +21,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "paths": {
       "components/*": ["components/*"],
       "hooks/*": ["hooks/*"],
@@ -30,7 +30,8 @@
       "pages/*": ["pages/*"],
       "styles/*": ["styles/*"],
       "utils/*": ["utils/*"],
-      "redux/*": ["redux/*"]
+      "redux/*": ["redux/*"],
+      "services/*": ["services/*"]
     }
   },
   "include": ["src"]

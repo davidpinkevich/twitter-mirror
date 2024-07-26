@@ -8,6 +8,7 @@ export default defineConfig({
   plugins: [react(), babel(), eslint()],
   resolve: {
     alias: {
+      services: '/src/services',
       components: '/src/components',
       hooks: '/src/hooks',
       assets: '/src/assets',
