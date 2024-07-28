@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom';
 
+import { Paths } from 'constants/index';
+import googleIcon from 'assets/icons/google.svg';
+import twitterIcon from 'assets/icons/twitter.svg';
+
 import {
   StyledEnter,
   StyledEnterBtn,
@@ -10,9 +14,6 @@ import {
   StyledEnterTitleImg,
 } from './styled';
 
-import googleIcon from 'assets/icons/google.svg';
-import twitterIcon from 'assets/icons/twitter.svg';
-import { Paths } from 'constants/paths';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from 'services/firebase';
 
