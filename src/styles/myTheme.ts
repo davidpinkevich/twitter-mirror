@@ -13,6 +13,10 @@ const myTheme: DefaultTheme = {
       title: '30px',
       h3: '18px',
       btn: '18px',
+      err: '32px',
+    },
+    dateSelect: {
+      item: '18px',
     },
   },
   colors: {
