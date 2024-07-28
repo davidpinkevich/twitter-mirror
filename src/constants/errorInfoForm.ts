@@ -17,7 +17,13 @@ const ERRORS = {
   password: {
     required: 'This field is required',
     minLength: 'Password at least 6 characters',
-    pattern: "Don't use spaces. Must have at least 2 capital letters and 1 number",
+    pattern: "Don't use spaces. Must have at least 1 capital letters and 1 number",
+  },
+  repeatPass: {
+    required: 'This field is required',
+    minLength: 'Password at least 6 characters',
+    pattern: "Don't use spaces. Must have at least 1 capital letters and 1 number",
+    validate: 'Doesn`t match the entered password',
   },
 };
 
