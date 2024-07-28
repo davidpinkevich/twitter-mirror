@@ -17,6 +17,7 @@ export default defineConfig({
       styles: '/src/styles',
       utils: '/src/utils',
       redux: '/src/redux',
+      types: '/src/types',
     },
   },
 });

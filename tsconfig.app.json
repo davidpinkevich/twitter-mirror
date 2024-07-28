@@ -31,7 +31,8 @@
       "styles/*": ["styles/*"],
       "utils/*": ["utils/*"],
       "redux/*": ["redux/*"],
-      "services/*": ["services/*"]
+      "services/*": ["services/*"],
+      "types/*": ["types/*"]
     }
   },
   "include": ["src"]
