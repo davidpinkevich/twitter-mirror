@@ -35,6 +35,11 @@ export interface TypesFormSignUp {
   repeatPass: string;
 }
 
+export interface TypesFormLogIn {
+  login: string;
+  password: string;
+}
+
 export type TypeDate = { month: string; day: string; year: string };
 
 export interface PropsDateFilters {
