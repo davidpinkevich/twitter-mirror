@@ -9,14 +9,13 @@ import { checkDate } from 'utils/checkDate';
 import { useAppDispatch } from 'hooks/useRedux';
 import twitter from 'assets/icons/twitter.svg';
 import { changeUID } from 'data/slices/sliceMemory';
-import { StyledInput, StyledButton } from 'styles/generalStyles';
+import { StyledButton, StyledError,StyledInput } from 'styles/generalStyles';
 import { type TypesFormSignUp } from 'types';
 
 import { DateFilters } from 'components/DateFilters';
 import { Loading } from 'components/Loading';
 
 import {
-  StyledError,
   StyledErrorExist,
   StyledFormSignUp,
   StyledFormSignUpImg,
@@ -30,7 +29,6 @@ const SignUp: React.FC = () => {
   const {
     register,
     handleSubmit,
-    clearErrors,
     watch,
     formState: { errors },
   } = useForm<TypesFormSignUp>({});
@@ -44,14 +42,11 @@ const SignUp: React.FC = () => {
   const [dateError, setDateError] = useState(false);
 
   const submitValid: SubmitHandler<TypesFormSignUp> = async (data) => {
-    console.log('datA: ', data);
-    console.log('date: ', date);
     try {
       if (checkDate(date)) {
         setError(false);
         setDateError(false);
         setLoading(true);
-        clearErrors();
         const user = await serviceAuthentication.createUser(data.email, data.password);
         dispatch(changeUID(user.uid));
         await serviceCollections.addUserWithEmail(user.uid, data, date);
