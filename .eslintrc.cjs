@@ -24,7 +24,7 @@ module.exports = {
       'error',
       {
         groups: [
-          ['^react', '^react-redux', '^@reduxjs/toolkit', 'react-hook-form'],
+          ['^react', '^react-redux', '^@reduxjs/toolkit', 'react-hook-form', '^firebase'],
           [
             '^constants(/.*|$)',
             '^utils(/.*|$)',

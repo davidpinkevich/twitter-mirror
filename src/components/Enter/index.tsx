@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { signInWithPopup } from 'firebase/auth';
 
 import { Paths } from 'constants/index';
 import googleIcon from 'assets/icons/google.svg';
@@ -14,7 +15,6 @@ import {
   StyledEnterTitleImg,
 } from './styled';
 
-import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from 'services/firebase';
 
 const Enter: React.FC = () => {

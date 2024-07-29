@@ -30,7 +30,6 @@ const SignUp: React.FC = () => {
     register,
     handleSubmit,
     clearErrors,
-    reset,
     watch,
     formState: { errors },
   } = useForm<TypesFormSignUp>({});
