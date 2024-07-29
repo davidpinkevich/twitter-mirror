@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+import { serviceAuthentication } from 'services/auth';
 import { ERRORS, Paths, PATTERNS } from 'constants/index';
 import { checkDate } from 'utils/checkDate';
 import { useAppDispatch } from 'hooks/useRedux';
@@ -24,8 +25,6 @@ import {
   StyledInput,
   StyledSignUp,
 } from './styled';
-
-import { serviceAuthentication } from 'services/auth';
 
 const SignUp: React.FC = () => {
   const {
