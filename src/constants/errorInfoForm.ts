@@ -25,6 +25,10 @@ const ERRORS = {
     pattern: "Don't use spaces. Must have at least 1 capital letters and 1 number",
     validate: 'Doesn`t match the entered password',
   },
+  login: {
+    required: 'This field is required',
+    validate: 'Enter your phone number or email login',
+  },
 };
 
 export { ERRORS };

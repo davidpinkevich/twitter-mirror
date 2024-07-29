@@ -15,6 +15,15 @@ const PATTERNS = {
     minLength: 6,
     pattern: /^(?=.*[A-Z])(?=.*[0-9]).*[^ ]+$/,
   },
+  login: {
+    required: true,
+    validate: (value: string) => {
+      if (value.match(/^\d{11}$/) || value.match(PATTERNS.email.pattern)) {
+        return true;
+      }
+      return false;
+    },
+  },
 };
 
 export { PATTERNS };
