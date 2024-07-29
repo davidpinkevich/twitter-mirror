@@ -9,6 +9,7 @@ import { checkDate } from 'utils/checkDate';
 import { useAppDispatch } from 'hooks/useRedux';
 import twitter from 'assets/icons/twitter.svg';
 import { changeUID } from 'data/slices/sliceMemory';
+import { StyledInput, StyledButton } from 'styles/generalStyles';
 import { type TypesFormSignUp } from 'types';
 
 import { DateFilters } from 'components/DateFilters';
@@ -18,12 +19,10 @@ import {
   StyledError,
   StyledErrorExist,
   StyledFormSignUp,
-  StyledFormSignUpBtn,
   StyledFormSignUpImg,
   StyledFormSignUpLink,
   StyledFormSignUpTitle,
   StyledFormSignUpWrapper,
-  StyledInput,
   StyledSignUp,
 } from './styled';
 
@@ -128,9 +127,9 @@ const SignUp: React.FC = () => {
           </Link>
           <DateFilters date={date} setDate={setDate} disabled={loading} />
           {dateError && <StyledError>This field is required</StyledError>}
-          <StyledFormSignUpBtn disabled={loading} type="submit">
+          <StyledButton disabled={loading} type="submit">
             {loading ? <Loading text="Send" /> : 'Create'}
-          </StyledFormSignUpBtn>
+          </StyledButton>
         </StyledFormSignUp>
       </StyledFormSignUpWrapper>
     </StyledSignUp>
