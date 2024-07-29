@@ -29,10 +29,6 @@ const StyledFormSignUp = styled.form`
   gap: 20px;
 `;
 
-const StyledError = styled.p`
-  color: ${(props) => props.theme.colors.mainRed};
-`;
-
 const StyledFormSignUpTitle = styled.h2`
   text-align: left;
   width: 100%;
@@ -47,6 +43,11 @@ const StyledFormSignUpImg = styled.img`
 
 const StyledFormSignUpLink = styled.p`
   color: ${(props) => props.theme.colors.mainBlue};
+  transition: all 0.2s;
+  &:hover {
+    text-decoration: underline;
+    color: ${(props) => props.theme.colors.mainBlack};
+  }
 `;
 
 export {
@@ -54,7 +55,6 @@ export {
   StyledFormSignUpWrapper,
   StyledFormSignUpImg,
   StyledFormSignUp,
-  StyledError,
   StyledErrorExist,
   StyledFormSignUpLink,
   StyledFormSignUpTitle,

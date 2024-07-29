@@ -2,7 +2,7 @@ import mainImg from 'assets/images/back-twitter.webp';
 
 import { Enter } from 'components/Enter';
 
-import { StyledHome, StyledHomeImageWrapper, StyledHomeImage } from './styled';
+import { StyledHome, StyledHomeImage,StyledHomeImageWrapper } from './styled';
 
 const Home: React.FC = () => {
   return (
