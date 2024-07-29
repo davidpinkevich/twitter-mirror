@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { serviceAuthentication } from 'services/auth';
+import { serviceCollections } from 'services/collections';
 import { ERRORS, Paths, PATTERNS } from 'constants/index';
 import { checkDate } from 'utils/checkDate';
 import { useAppDispatch } from 'hooks/useRedux';
@@ -44,6 +45,8 @@ const SignUp: React.FC = () => {
   const [dateError, setDateError] = useState(false);
 
   const submitValid: SubmitHandler<TypesFormSignUp> = async (data) => {
+    console.log('datA: ', data);
+    console.log('date: ', date);
     try {
       if (checkDate(date)) {
         setError(false);
@@ -52,6 +55,7 @@ const SignUp: React.FC = () => {
         clearErrors();
         const user = await serviceAuthentication.createUser(data.email, data.password);
         dispatch(changeUID(user.uid));
+        await serviceCollections.addUserWithEmail(user.uid, data, date);
         setLoading(false);
       } else {
         setDateError(true);

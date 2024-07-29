@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
-import { signInWithPopup } from 'firebase/auth';
 
+import { serviceAuthentication } from 'services/auth';
+import { serviceCollections } from 'services/collections';
 import { Paths } from 'constants/index';
+import { useAppDispatch } from 'hooks/useRedux';
 import googleIcon from 'assets/icons/google.svg';
 import twitterIcon from 'assets/icons/twitter.svg';
+import { changeUID } from 'data/slices/sliceMemory';
 
 import {
   StyledEnter,
@@ -15,11 +18,12 @@ import {
   StyledEnterTitleImg,
 } from './styled';
 
-import { auth, googleProvider } from 'services/firebase';
-
 const Enter: React.FC = () => {
-  const handleGoogle = () => {
-    signInWithPopup(auth, googleProvider).then((data) => console.log(data));
+  const dispatch = useAppDispatch();
+  const handleGoogle = async () => {
+    const user = await serviceAuthentication.enterWithGoogle();
+    dispatch(changeUID(user.uid));
+    serviceCollections.addUserWithGoogle(user.uid, user);
   };
 
   return (

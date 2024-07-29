@@ -19,7 +19,7 @@ const DateSelect: React.FC<PropsDateSelect> = ({ type, date, setDate, target, se
       ? DATE_PERIODS.months
       : type === NAMES_PERIODS.day
       ? getDaysInMonth(month, year)
-      : getYears(DATE_PERIODS.startYear);
+      : getYears();
 
   const handleChoose = (target: string, value: string) => {
     setDate({ ...date, [target]: value });
