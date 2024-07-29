@@ -39,7 +39,9 @@ const Enter: React.FC = () => {
         <StyledEnterBtn>Sign up with email</StyledEnterBtn>
       </Link>
       <StyledEnterP>Already have an account?</StyledEnterP>
-      <StyledEnterBtn>Log in</StyledEnterBtn>
+      <Link to={Paths.login}>
+        <StyledEnterBtn>Log in</StyledEnterBtn>
+      </Link>
     </StyledEnter>
   );
 };
