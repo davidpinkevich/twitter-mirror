@@ -4,7 +4,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { ERRORS, Paths, PATTERNS } from 'constants/index';
 import { checkDate } from 'utils/checkDate';
+import { useAppDispatch } from 'hooks/useRedux';
 import twitter from 'assets/icons/twitter.svg';
+import { changeUID } from 'data/slices/sliceMemory';
 import { type TypesFormSignUp } from 'types';
 
 import { DateFilters } from 'components/DateFilters';
@@ -34,6 +36,8 @@ const SignUp: React.FC = () => {
     formState: { errors },
   } = useForm<TypesFormSignUp>({});
 
+  const dispatch = useAppDispatch();
+
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -47,7 +51,8 @@ const SignUp: React.FC = () => {
         setDateError(false);
         setLoading(true);
         clearErrors();
-        await serviceAuthentication.createUser(data.email, data.password);
+        const user = await serviceAuthentication.createUser(data.email, data.password);
+        dispatch(changeUID(user.uid));
         setLoading(false);
       } else {
         setDateError(true);

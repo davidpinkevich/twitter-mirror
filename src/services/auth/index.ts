@@ -6,8 +6,7 @@ class AuthenticationService {
   async createUser(email: string, password: string) {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log('user: ', user.uid);
+      return userCredential.user;
     } catch (error) {
       console.log(error);
       throw error;
