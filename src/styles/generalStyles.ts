@@ -26,6 +26,7 @@ const StyledButton = styled.button`
   color: ${(props) => props.theme.colors.mainWhite};
   font-size: ${(props) => props.theme.fontSizes.signup.btn};
   font-weight: 700;
+  width: 100%;
   border-radius: 76px;
   padding: 20px;
   transition: all 0.2s;
@@ -39,4 +40,8 @@ const StyledButton = styled.button`
   }
 `;
 
-export { StyledInput, StyledButton };
+const StyledError = styled.p`
+  color: ${(props) => props.theme.colors.mainRed};
+`;
+
+export { StyledInput, StyledButton, StyledError };

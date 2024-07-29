@@ -2,12 +2,14 @@ import mainImg from 'assets/images/back-twitter.webp';
 
 import { Enter } from 'components/Enter';
 
-import { StyledHome, StyledHomeImage } from './styled';
+import { StyledHome, StyledHomeImageWrapper, StyledHomeImage } from './styled';
 
 const Home: React.FC = () => {
   return (
     <StyledHome>
-      <StyledHomeImage src={mainImg} alt="twitter" />
+      <StyledHomeImageWrapper>
+        <StyledHomeImage src={mainImg} alt="twitter" />
+      </StyledHomeImageWrapper>
       <Enter />
     </StyledHome>
   );
