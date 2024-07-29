@@ -1,3 +1,5 @@
+import { BREAKPOINTS } from 'constants/index';
+
 import styled from 'styled-components';
 
 const StyledDateSelect = styled.div`
@@ -7,6 +9,9 @@ const StyledDateSelect = styled.div`
   flex-shrink: 0;
   &:first-child {
     flex-basis: 40%;
+    @media (max-width: ${BREAKPOINTS.md}) {
+      flex-basis: 100%;
+    }
   }
   &:nth-child(2) {
     flex-basis: 20%;

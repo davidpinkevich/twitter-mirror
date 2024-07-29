@@ -1,3 +1,5 @@
+import { BREAKPOINTS } from 'constants/index';
+
 import styled from 'styled-components';
 
 const StyledDateFilters = styled.div`
@@ -11,6 +13,10 @@ const StyledDateFiltersItems = styled.div<{ $disabled: boolean }>`
   & button {
     opacity: ${(props) => (props.$disabled ? 0.5 : 1)};
     pointer-events: ${(props) => (props.$disabled ? 'none' : 'all')};
+  }
+
+  @media (max-width: ${BREAKPOINTS.md}) {
+    flex-wrap: wrap;
   }
 `;
 
