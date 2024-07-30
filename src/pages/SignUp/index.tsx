@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { serviceAuthentication } from 'services/auth';
@@ -9,7 +9,7 @@ import { checkDate } from 'utils/checkDate';
 import { useAppDispatch } from 'hooks/useRedux';
 import twitter from 'assets/icons/twitter.svg';
 import { changeUID } from 'data/slices/sliceMemory';
-import { StyledButton, StyledError,StyledInput } from 'styles/generalStyles';
+import { StyledButton, StyledError, StyledInput } from 'styles/generalStyles';
 import { type TypesFormSignUp } from 'types';
 
 import { DateFilters } from 'components/DateFilters';
@@ -35,6 +35,8 @@ const SignUp: React.FC = () => {
 
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -50,6 +52,7 @@ const SignUp: React.FC = () => {
         const user = await serviceAuthentication.createUser(data.email, data.password);
         dispatch(changeUID(user.uid));
         await serviceCollections.addUserWithEmail(user.uid, data, date);
+        navigate(Paths.base + Paths.profile);
         setLoading(false);
       } else {
         setDateError(true);

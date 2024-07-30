@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { serviceAuthentication } from 'services/auth';
-import { ERRORS, Paths,PATTERNS } from 'constants/index';
+import { ERRORS, Paths, PATTERNS } from 'constants/index';
 import { useAppDispatch } from 'hooks/useRedux';
 import twitter from 'assets/icons/twitter.svg';
 import { changeUID } from 'data/slices/sliceMemory';
-import { StyledButton,StyledError, StyledInput } from 'styles/generalStyles';
+import { StyledButton, StyledError, StyledInput } from 'styles/generalStyles';
 import { type TypesFormLogIn } from 'types';
 
 import { Loading } from 'components/Loading';
@@ -30,6 +30,8 @@ const LogIn: React.FC = () => {
 
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -41,6 +43,7 @@ const LogIn: React.FC = () => {
         ? await serviceAuthentication.userSignInPhone(data.login, data.password)
         : await serviceAuthentication.userSignInEmail(data.login, data.password);
       dispatch(changeUID(user.uid));
+      navigate(Paths.base + Paths.profile);
       setLoading(false);
     } catch (error) {
       setLoading(false);
