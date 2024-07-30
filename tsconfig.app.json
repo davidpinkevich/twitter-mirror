@@ -21,7 +21,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "paths": {
       "components/*": ["components/*"],
       "hooks/*": ["hooks/*"],
@@ -29,7 +29,10 @@
       "constants/*": ["constants/*"],
       "pages/*": ["pages/*"],
       "styles/*": ["styles/*"],
-      "utils/*": ["utils/*"]
+      "utils/*": ["utils/*"],
+      "data/*": ["data/*"],
+      "services/*": ["services/*"],
+      "types/*": ["types/*"]
     }
   },
   "include": ["src"]
