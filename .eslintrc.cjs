@@ -29,6 +29,7 @@ module.exports = {
             '^react-redux',
             '^@reduxjs/toolkit',
             '^redux-persist',
+            'styled-components',
             '^react-hook-form',
             '^firebase',
           ],
