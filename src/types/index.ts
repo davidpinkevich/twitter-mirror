@@ -16,6 +16,9 @@ export interface TypesTheme {
     dateSelect: {
       item: string;
     };
+    user: {
+      editBtn: string;
+    };
   };
   colors: {
     mainBlack: string;
@@ -58,4 +61,18 @@ export interface PropsDateSelect {
 
 export interface PropsLoading {
   text: string;
+}
+
+export interface TypeUser {
+  data?: {
+    number?: null | string;
+    name?: string;
+    secondName?: string;
+    email?: string;
+    gender?: string;
+    date?: string;
+    linkTG?: string;
+    uid?: string;
+    img?: string;
+  };
 }

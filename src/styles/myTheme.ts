@@ -18,6 +18,9 @@ const myTheme: DefaultTheme = {
     dateSelect: {
       item: '18px',
     },
+    user: {
+      editBtn: '18px',
+    },
   },
   colors: {
     mainBlack: '#000000',
