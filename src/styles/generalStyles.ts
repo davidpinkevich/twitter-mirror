@@ -2,10 +2,16 @@ import styled from 'styled-components';
 
 const StyledInput = styled.input`
   width: 100%;
-  padding: 25px 20px;
+  padding: 15px 20px;
   border-radius: 6px;
   font-size: ${(props) => props.theme.fontSizes.signup.input};
   border: ${(props) => `1px solid ${props.theme.colors.ligthGray}`};
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.ligthGray};
+  }
+
   &:disabled {
     opacity: 0.5;
   }

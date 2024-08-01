@@ -18,6 +18,10 @@ export interface TypesTheme {
     };
     user: {
       editBtn: string;
+      headerName: string;
+    };
+    home: {
+      name: string;
     };
   };
   colors: {
@@ -43,6 +47,14 @@ export interface TypesFormLogIn {
   password: string;
 }
 
+export interface TypesFormModal {
+  name: string;
+  secondName: string;
+  password: string;
+  linkTG: string;
+  gender: TypeGenders;
+}
+
 export type TypeDate = { month: string; day: string; year: string };
 
 export interface PropsDateFilters {
@@ -64,15 +76,34 @@ export interface PropsLoading {
 }
 
 export interface TypeUser {
-  data?: {
-    number?: null | string;
-    name?: string;
-    secondName?: string;
-    email?: string;
-    gender?: string;
-    date?: string;
-    linkTG?: string;
-    uid?: string;
-    img?: string;
-  };
+  number?: null | string;
+  name?: string;
+  secondName?: string;
+  email?: string;
+  gender: TypeGenders;
+  date?: string;
+  linkTG?: string;
+  uid?: string;
+  photo?: string;
+}
+
+export type TypeGenders = 'female' | 'male' | 'secret';
+
+export interface PropsEditButton {
+  changeModal: () => void;
+}
+
+export interface PropsUserModal {
+  user: TypeUser;
+  changeModal: () => void;
+}
+
+export interface PropsUserInfo {
+  user: TypeUser;
+  viewModal: boolean;
+  changeViewModal: () => void;
+}
+
+export interface PropsUserHeader {
+  name: string | undefined;
 }

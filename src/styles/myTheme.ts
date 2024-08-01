@@ -20,6 +20,10 @@ const myTheme: DefaultTheme = {
     },
     user: {
       editBtn: '18px',
+      headerName: '20px',
+    },
+    home: {
+      name: '24px',
     },
   },
   colors: {
