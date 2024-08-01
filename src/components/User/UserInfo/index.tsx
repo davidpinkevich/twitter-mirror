@@ -33,15 +33,19 @@ const UserInfo: React.FC<PropsUserInfo> = ({ user, viewModal, changeViewModal })
         <StyledUserInfoBlockName>
           {name} {secondName}
         </StyledUserInfoBlockName>
+        {date && (
+          <StyledUserInfoBlockP>
+            Date: <StyledUserInfoBlockSpan>{date}</StyledUserInfoBlockSpan>
+          </StyledUserInfoBlockP>
+        )}
         <StyledUserInfoBlockP>
-          Date: <StyledUserInfoBlockSpan>{date}</StyledUserInfoBlockSpan>
+          Gender: <StyledUserInfoBlockSpan>{gender ? gender : 'secret'}</StyledUserInfoBlockSpan>
         </StyledUserInfoBlockP>
-        <StyledUserInfoBlockP>
-          Gender: <StyledUserInfoBlockSpan>{gender}</StyledUserInfoBlockSpan>
-        </StyledUserInfoBlockP>
-        <StyledUserInfoBlockP>
-          TG: <StyledUserInfoBlockTg>{linkTG}</StyledUserInfoBlockTg>
-        </StyledUserInfoBlockP>
+        {linkTG && (
+          <StyledUserInfoBlockP>
+            TG: <StyledUserInfoBlockTg>{linkTG}</StyledUserInfoBlockTg>
+          </StyledUserInfoBlockP>
+        )}
       </StyledUserInfoBlock>
       <EditButton changeModal={changeViewModal} />
       {viewModal && <UserModal user={user} changeModal={changeViewModal} />}
