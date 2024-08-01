@@ -1,5 +1,5 @@
-import { changeTheme, getTheme } from 'data/slices/sliceMemory';
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
+import { changeTheme, getTheme } from 'data/slices/sliceMemory';
 
 import { StyledSwiper, StyledSwiperBtn } from './styled';
 
