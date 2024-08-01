@@ -42,9 +42,9 @@ class AuthenticationService {
 
   async userSignInPhone(phone: string, password: string) {
     try {
-      const docRef = query(collection(db, 'users'), where('data.phone', '==', phone));
+      const docRef = query(collection(db, 'users'), where('phone', '==', phone));
       const docSnap = await getDocs(docRef);
-      const email = docSnap.docs.map((item) => item.data())[0].data.email;
+      const email = docSnap.docs.map((item) => item.data())[0].email;
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       return userCredential.user;
     } catch (error) {
