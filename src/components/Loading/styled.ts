@@ -15,7 +15,7 @@ const pulsLoading = keyframes`
 const StyledLoading = styled.p`
   text-align: center;
   font-size: ${(props) => props.theme.fontSizes.signup.btn};
-  color: ${(props) => props.theme.colors.mainWhite};
+  color: inherit;
   flex-grow: 1;
 `;
 
@@ -25,7 +25,7 @@ const StyledLoadingSpan = styled.span`
   height: 3px;
   border-radius: 50%;
   margin: 0 3px;
-  background-color: ${(props) => props.theme.colors.mainWhite};
+  background-color: ${(props) => props.theme.colors.darkGray};
 `;
 
 const SpanOne = styled(StyledLoadingSpan)`
