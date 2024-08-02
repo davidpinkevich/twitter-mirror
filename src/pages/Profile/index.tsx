@@ -5,9 +5,11 @@ import { useAppSelector } from 'hooks/useRedux';
 import { getUID } from 'data/slices/sliceMemory';
 import { TypeUser } from 'types';
 
-import { StyledUser } from './styled';
+import { CreateTweet } from 'components/Tweets/CreateTweet';
 import { UserHeader } from 'components/User/UserHeader';
 import { UserInfo } from 'components/User/UserInfo';
+
+import { StyledUser } from './styled';
 
 const Profile: React.FC = () => {
   const uid = useAppSelector(getUID);
@@ -25,12 +27,13 @@ const Profile: React.FC = () => {
     };
 
     fetchData();
-  }, [viewModal]);
+  }, [viewModal, uid]);
 
   return (
     <StyledUser>
       <UserHeader name={user?.name} />
       <UserInfo user={user} viewModal={viewModal} changeViewModal={changeViewModal} />
+      <CreateTweet user={user} uid={uid} />
     </StyledUser>
   );
 };
