@@ -26,6 +26,10 @@ const myTheme: DefaultTheme = {
     home: {
       name: '24px',
     },
+    tweet: {
+      h2: '20px',
+      p: '18px',
+    },
   },
   colors: {
     mainBlack: '#000000',

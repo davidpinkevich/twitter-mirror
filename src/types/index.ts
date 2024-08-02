@@ -24,6 +24,10 @@ export interface TypesTheme {
     home: {
       name: string;
     };
+    tweet: {
+      h2: string;
+      p: string;
+    };
   };
   colors: {
     mainBlack: string;
@@ -78,7 +82,9 @@ export interface PropsLoading {
 
 export type TypeTweet = {
   text: string;
-  image: File | null;
+  id: number;
+  timestamp: number;
+  image: string | null;
 };
 
 export interface TypeUser {
@@ -91,7 +97,7 @@ export interface TypeUser {
   linkTG?: string;
   uid?: string;
   photo?: string;
-  tweets?: Array<TypeTweet>;
+  tweets: Array<TypeTweet>;
 }
 
 export type TypeGenders = 'female' | 'male' | 'secret';
@@ -118,4 +124,10 @@ export interface PropsUserHeader {
 export interface PropsCreateTweet {
   user: TypeUser;
   uid: string;
+  addNewTweet: (value: TypeTweet) => void;
+}
+
+export interface PropsTweet {
+  tweet: TypeTweet;
+  user: TypeUser;
 }
