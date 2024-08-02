@@ -96,20 +96,23 @@ class CollectionsService {
 
   async createTweet(user: TypeUser, uid: string, text: string, image: File | null) {
     try {
-      if (image && user.tweets) {
+      if (image) {
         const mountainsRef = ref(storage, image.name);
         await uploadBytes(mountainsRef, image);
         const downloadURL = await getDownloadURL(mountainsRef);
+        const tweet = { text, id: createID(), timestamp: Date.now(), image: downloadURL };
         await updateDoc(doc(db, 'users', uid), {
           ...user,
-          tweets: [...user.tweets, { text, id: createID(), image: downloadURL }],
+          tweets: [...user.tweets, tweet],
         });
+        return tweet;
       } else {
-        if (user.tweets)
-          await updateDoc(doc(db, 'users', uid), {
-            ...user,
-            tweets: [...user.tweets, { text, image: null }],
-          });
+        const tweet = { text, id: createID(), timestamp: Date.now(), image: null };
+        await updateDoc(doc(db, 'users', uid), {
+          ...user,
+          tweets: [...user.tweets, tweet],
+        });
+        return tweet;
       }
     } catch (error) {
       console.log(error);
