@@ -7,6 +7,7 @@ const StyledApp = styled.div<{ $themeType: ThemeMode.DARK | ThemeMode.WHITE }>`
   font-family: 'Roboto', sans-serif;
   display: flex;
   min-height: 100vh;
+  padding: 0px 20px 20px 20px;
 
   background-color: ${(props) =>
     props.$themeType === ThemeMode.WHITE
