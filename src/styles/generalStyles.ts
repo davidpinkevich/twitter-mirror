@@ -4,12 +4,19 @@ const StyledInput = styled.input`
   width: 100%;
   padding: 15px 20px;
   border-radius: 6px;
+  background-color: inherit;
+  color: inherit;
   font-size: ${(props) => props.theme.fontSizes.signup.input};
   border: ${(props) => `1px solid ${props.theme.colors.ligthGray}`};
   transition: all 0.2s;
 
   &:hover {
-    background-color: ${(props) => props.theme.colors.ligthGray};
+    box-shadow: ${(props) => `inset 0px 0px 2px 2px ${props.theme.colors.ligthGray}`};
+  }
+
+  &:focus {
+    border: ${(props) => `1px solid ${props.theme.colors.mainBlue}`};
+    box-shadow: ${(props) => `inset 0px 0px 2px 2px ${props.theme.colors.mainBlue}`};
   }
 
   &:disabled {

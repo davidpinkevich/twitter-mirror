@@ -19,6 +19,7 @@ export interface TypesTheme {
     user: {
       editBtn: string;
       headerName: string;
+      createTweet: string;
     };
     home: {
       name: string;
@@ -75,6 +76,11 @@ export interface PropsLoading {
   text: string;
 }
 
+export type TypeTweet = {
+  text: string;
+  image: File | null;
+};
+
 export interface TypeUser {
   number?: null | string;
   name?: string;
@@ -85,6 +91,7 @@ export interface TypeUser {
   linkTG?: string;
   uid?: string;
   photo?: string;
+  tweets?: Array<TypeTweet>;
 }
 
 export type TypeGenders = 'female' | 'male' | 'secret';
@@ -106,4 +113,9 @@ export interface PropsUserInfo {
 
 export interface PropsUserHeader {
   name: string | undefined;
+}
+
+export interface PropsCreateTweet {
+  user: TypeUser;
+  uid: string;
 }
