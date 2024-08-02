@@ -4,6 +4,7 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 import { serviceAuthentication } from 'services/auth';
 import { db, storage } from 'services/firebase';
+import { createID } from 'utils/createID';
 import { stringDate } from 'utils/getDateValues';
 import { TypesFormModal, TypeUser } from 'types';
 
@@ -22,6 +23,7 @@ class CollectionsService {
         ...data,
         date: stringDate(date),
         uid,
+        tweets: [],
       });
     } catch (error) {
       console.log(error);
@@ -35,6 +37,7 @@ class CollectionsService {
         number: user?.phoneNumber,
         uid: user?.uid,
         photo: user?.photoURL,
+        tweets: [],
       });
     } catch (error) {
       console.log(error);
@@ -85,6 +88,29 @@ class CollectionsService {
         ...data,
         gender,
       });
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  async createTweet(user: TypeUser, uid: string, text: string, image: File | null) {
+    try {
+      if (image && user.tweets) {
+        const mountainsRef = ref(storage, image.name);
+        await uploadBytes(mountainsRef, image);
+        const downloadURL = await getDownloadURL(mountainsRef);
+        await updateDoc(doc(db, 'users', uid), {
+          ...user,
+          tweets: [...user.tweets, { text, id: createID(), image: downloadURL }],
+        });
+      } else {
+        if (user.tweets)
+          await updateDoc(doc(db, 'users', uid), {
+            ...user,
+            tweets: [...user.tweets, { text, image: null }],
+          });
+      }
     } catch (error) {
       console.log(error);
       throw error;
