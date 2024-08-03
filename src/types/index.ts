@@ -28,11 +28,16 @@ export interface TypesTheme {
       h2: string;
       p: string;
     };
+    logout: {
+      text: string;
+      btn: string;
+    };
   };
   colors: {
     mainBlack: string;
     mainWhite: string;
     darkGray: string;
+    middleGray: string;
     ligthGray: string;
     mainBlue: string;
     mainRed: string;

@@ -30,6 +30,10 @@ const myTheme: DefaultTheme = {
       h2: '20px',
       p: '18px',
     },
+    logout: {
+      text: '16px',
+      btn: '18px',
+    },
   },
   colors: {
     mainBlack: '#000000',
@@ -38,6 +42,7 @@ const myTheme: DefaultTheme = {
     darkGray: '#666666',
     mainBlue: '#1DA1F2',
     mainRed: '#cf0404',
+    middleGray: '#B3B8BB',
   },
 };
 
