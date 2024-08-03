@@ -16,6 +16,7 @@ import {
   StyledCreateTweetBtn,
   StyledCreateTweetButtons,
   StyledCreateTweetButtonsFile,
+  StyledCreateTweetEditImg,
   StyledCreateTweetTextarea,
   StyledCreateTweetViewImage,
   StyledDeleteImage,
@@ -24,7 +25,7 @@ import {
   StyledInputFileLabel,
 } from './styled';
 
-const CreateTweet: React.FC<PropsCreateTweet> = ({ user, uid }) => {
+const CreateTweet: React.FC<PropsCreateTweet> = ({ user, uid, addNewTweet }) => {
   const [value, setValue] = useState('');
 
   const [loading, setLoading] = useState(false);
@@ -44,7 +45,8 @@ const CreateTweet: React.FC<PropsCreateTweet> = ({ user, uid }) => {
   const handleCreate = async () => {
     try {
       setLoading(true);
-      await serviceCollections.createTweet(user, uid, value, file);
+      const tweet = await serviceCollections.createTweet(user, uid, value, file);
+      addNewTweet(tweet);
       setFile(null);
       setValue('');
       setLoading(false);
@@ -71,25 +73,27 @@ const CreateTweet: React.FC<PropsCreateTweet> = ({ user, uid }) => {
         />
         <StyledCreateTweetButtons>
           <StyledCreateTweetButtonsFile>
-            <StyledInputFileLabel>
-              <StyledInputFile
-                type="file"
-                accept="image/*"
-                disabled={loading}
-                multiple={false}
-                onChange={handleFileChange}
-              />
-              <StyledInputFileImage src={addImage} />
-            </StyledInputFileLabel>
+            <StyledCreateTweetEditImg>
+              <StyledInputFileLabel>
+                <StyledInputFile
+                  type="file"
+                  accept="image/*"
+                  disabled={loading}
+                  multiple={false}
+                  onChange={handleFileChange}
+                />
+                <StyledInputFileImage src={addImage} />
+              </StyledInputFileLabel>
+              {file && (
+                <StyledDeleteImage
+                  $disabled={loading}
+                  src={cross}
+                  alt="cross"
+                  onClick={handleFileDelete}
+                />
+              )}
+            </StyledCreateTweetEditImg>
             {file && <StyledCreateTweetViewImage src={URL.createObjectURL(file)} />}
-            {file && (
-              <StyledDeleteImage
-                $disabled={loading}
-                src={cross}
-                alt="cross"
-                onClick={handleFileDelete}
-              />
-            )}
           </StyledCreateTweetButtonsFile>
           <StyledCreateTweetBtn disabled={!value.length || loading} onClick={handleCreate}>
             {loading ? <Loading text="Create" /> : 'Tweet'}

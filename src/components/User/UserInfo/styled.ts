@@ -4,6 +4,7 @@ const StyledUserInfo = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  width: 100%;
   top: 0;
   left: 0;
 `;
@@ -31,7 +32,7 @@ const StyledUserInfoBackWrapper = styled.div`
   position: relative;
   top: 0;
   left: 0;
-  width: 910px;
+  max-width: 910px;
   height: 280px;
 `;
 const StyledUserInfoBack = styled.img`

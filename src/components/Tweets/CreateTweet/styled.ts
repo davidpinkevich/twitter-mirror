@@ -38,6 +38,7 @@ const StyledCreateTweetAvatarWrap = styled.div`
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  flex-shrink: 0;
   box-shadow: ${(props) => `inset 0px 0px 2px 4px ${props.theme.colors.ligthGray}`};
   background-color: ${(props) => props.theme.colors.mainWhite};
 `;
@@ -82,8 +83,8 @@ const StyledInputFile = styled.input`
 `;
 
 const StyledCreateTweetViewImage = styled.img`
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 140px;
+  max-height: 140px;
   border-radius: 10px;
   border: ${(props) => `2px solid ${props.theme.colors.ligthGray}`};
 `;
@@ -131,6 +132,13 @@ const StyledDeleteImage = styled.img<{ $disabled: boolean }>`
   pointer-events: ${(props) => (props.$disabled ? 'none' : 'all')};
 `;
 
+const StyledCreateTweetEditImg = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: column-reverse;
+`;
+
 export {
   StyledCreateTweet,
   StyledCreateTweetTextarea,
@@ -140,6 +148,7 @@ export {
   StyledInputFileLabel,
   StyledInputFile,
   StyledInputFileImage,
+  StyledCreateTweetEditImg,
   StyledCreateTweetViewImage,
   StyledCreateTweetButtonsFile,
   StyledCreateTweetBtn,
