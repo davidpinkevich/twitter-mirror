@@ -5,7 +5,6 @@ import { useAppSelector } from 'hooks/useRedux';
 import { getTheme } from 'data/slices/sliceMemory';
 
 import { Home } from 'pages/Home';
-import { Layout } from 'pages/Layout';
 import { LogIn } from 'pages/LogIn';
 import { Profile } from 'pages/Profile';
 import { SignUp } from 'pages/SignUp';
@@ -42,29 +41,9 @@ const routes = [
     path: Paths.profile,
     element: (
       <ProtectedRoute path={Paths.base}>
-        <Layout />
+        <Profile />
       </ProtectedRoute>
     ),
-    children: [
-      {
-        path: '',
-        element: <Profile />,
-      },
-    ],
-  },
-  {
-    path: Paths.feed,
-    element: (
-      <ProtectedRoute path={Paths.base}>
-        <Layout />
-      </ProtectedRoute>
-    ),
-    children: [
-      {
-        path: '',
-        element: <div>feed</div>,
-      },
-    ],
   },
 ];
 
@@ -75,12 +54,7 @@ function App() {
     <StyledApp $themeType={theme}>
       <Routes>
         {routes.map((route, index) => (
-          <Route key={index} path={route.path} element={route.element}>
-            {route.children &&
-              route.children.map((child, childIndex) => (
-                <Route key={childIndex} path={child.path} element={child.element} />
-              ))}
-          </Route>
+          <Route key={index} path={route.path} element={route.element} />
         ))}
       </Routes>
     </StyledApp>
