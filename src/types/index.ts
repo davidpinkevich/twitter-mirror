@@ -130,4 +130,5 @@ export interface PropsCreateTweet {
 export interface PropsTweet {
   tweet: TypeTweet;
   user: TypeUser;
+  deleteTweet: (id: number) => void;
 }
