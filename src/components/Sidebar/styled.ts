@@ -28,7 +28,7 @@ const StlyedSidebarBtnTweet = styled.button`
   padding: 15px 30px;
   height: 50px;
   width: 230px;
-  border-radius: 120px;
+  border-radius: 60px;
   font-size: ${(props) => props.theme.fontSizes.user.createTweet};
   color: ${(props) => props.theme.colors.mainWhite};
   background-color: ${(props) => props.theme.colors.mainBlue};
