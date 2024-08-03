@@ -119,6 +119,18 @@ class CollectionsService {
       throw error;
     }
   }
+
+  async deleteTweet(user: TypeUser, uid: string, tweeID: number) {
+    try {
+      await updateDoc(doc(db, 'users', uid), {
+        ...user,
+        tweets: user.tweets.filter((item) => item.id !== tweeID),
+      });
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 }
 
 const serviceCollections = new CollectionsService();
