@@ -17,6 +17,9 @@ const sliceMemory = createSlice({
     changeTheme: (state) => {
       state.theme = state.theme === ThemeMode.DARK ? ThemeMode.WHITE : ThemeMode.DARK;
     },
+    logOut: (state) => {
+      state.UID = '';
+    },
   },
   selectors: {
     getUID: (state) => state.UID,
@@ -24,7 +27,7 @@ const sliceMemory = createSlice({
   },
 });
 
-export const { changeUID, changeTheme } = sliceMemory.actions;
+export const { changeUID, changeTheme, logOut } = sliceMemory.actions;
 export const { getUID, getTheme } = sliceMemory.selectors;
 
 export default sliceMemory.reducer;

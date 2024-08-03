@@ -9,6 +9,7 @@ import { type PropsCreateTweet } from 'types';
 
 import { CreateTweet } from 'components/Tweets/CreateTweet';
 
+import { Logout } from './Logout';
 import {
   StlyedSidebar,
   StlyedSidebarBtnTweet,
@@ -40,6 +41,7 @@ const Sidebar: React.FC<PropsCreateTweet> = ({ user, uid, addNewTweet }) => {
           />
         </StlyedSidebarModal>
       )}
+      <Logout user={user} />
     </StlyedSidebar>
   );
 };
