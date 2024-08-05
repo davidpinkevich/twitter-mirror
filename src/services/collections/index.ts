@@ -24,6 +24,7 @@ class CollectionsService {
         date: stringDate(date),
         uid,
         tweets: [],
+        likes: [],
       });
     } catch (error) {
       console.log(error);
@@ -38,6 +39,7 @@ class CollectionsService {
         uid: user?.uid,
         photo: user?.photoURL,
         tweets: [],
+        likes: [],
       });
     } catch (error) {
       console.log(error);
@@ -100,14 +102,20 @@ class CollectionsService {
         const mountainsRef = ref(storage, image.name);
         await uploadBytes(mountainsRef, image);
         const downloadURL = await getDownloadURL(mountainsRef);
-        const tweet = { text, id: createID(), timestamp: Date.now(), image: downloadURL };
+        const tweet = {
+          text,
+          id: createID(),
+          timestamp: Date.now(),
+          image: downloadURL,
+          likes: [],
+        };
         await updateDoc(doc(db, 'users', uid), {
           ...user,
           tweets: [...user.tweets, tweet],
         });
         return tweet;
       } else {
-        const tweet = { text, id: createID(), timestamp: Date.now(), image: null };
+        const tweet = { text, id: createID(), timestamp: Date.now(), image: null, likes: [] };
         await updateDoc(doc(db, 'users', uid), {
           ...user,
           tweets: [...user.tweets, tweet],
@@ -120,12 +128,39 @@ class CollectionsService {
     }
   }
 
-  async deleteTweet(user: TypeUser, uid: string, tweeID: number) {
+  async deleteTweet(user: TypeUser, uid: string, tweetID: number) {
     try {
       await updateDoc(doc(db, 'users', uid), {
         ...user,
-        tweets: user.tweets.filter((item) => item.id !== tweeID),
+        tweets: user.tweets.filter((item) => item.id !== tweetID),
       });
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  async changeLike(user: TypeUser, uid: string, tweetID: number) {
+    try {
+      const tweets = user.tweets.map((item) => {
+        if (item.id === tweetID && item.likes.includes(uid)) {
+          const newLikes = [...item.likes];
+          const index = newLikes.findIndex((item) => item === uid);
+          newLikes.splice(index, 1);
+          return { ...item, likes: newLikes };
+        } else if (item.id === tweetID && !item.likes.includes(uid)) {
+          const newLikes = [...item.likes];
+          newLikes.push(uid);
+          return { ...item, likes: newLikes };
+        } else {
+          return item;
+        }
+      });
+      await updateDoc(doc(db, 'users', uid), {
+        ...user,
+        tweets,
+      });
+      return tweets.reduce((a, b) => a + b.likes.length, 0);
     } catch (error) {
       console.log(error);
       throw error;
