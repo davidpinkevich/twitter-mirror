@@ -7,6 +7,8 @@ import plug from 'assets/images/plug.svg';
 import { getTheme } from 'data/slices/sliceMemory';
 import { type PropsTweet } from 'types';
 
+import { ButtonLike } from '../ButtonLike';
+
 import { StyledTweet } from './styled';
 import {
   StyledDeleteImage,
@@ -19,8 +21,8 @@ import {
   StyledTweetUserP,
 } from './styled';
 
-const Tweet: React.FC<PropsTweet> = ({ tweet, user, deleteTweet }) => {
-  const { name, linkTG } = user;
+const Tweet: React.FC<PropsTweet> = ({ tweet, user, deleteTweet, addLike }) => {
+  const { name, linkTG, uid } = user;
   const { image, text, timestamp, id } = tweet;
 
   const theme = useAppSelector(getTheme);
@@ -36,6 +38,7 @@ const Tweet: React.FC<PropsTweet> = ({ tweet, user, deleteTweet }) => {
         </StyledTweetUser>
         <StyledTweetText>{text}</StyledTweetText>
         {image && <StyledTweetImage src={image} />}
+        <ButtonLike addLike={addLike} tweet={tweet} uid={uid} id={id} />
       </StyledTweetInfo>
       <StyledDeleteImage
         onClick={() => deleteTweet(id)}
