@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { ThemeMode } from 'constants/themeMode';
 
 const StlyedSidebar = styled.div<{ $modal: boolean; $typeTheme: ThemeMode.WHITE | ThemeMode.DARK }>`
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
   background-color: ${(props) =>
     props.$typeTheme === ThemeMode.WHITE
       ? props.theme.colors.mainWhite

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { ThemeMode } from 'constants/themeMode';
+import { ThemeMode } from 'constants/index';
 import { useAppSelector } from 'hooks/useRedux';
 import crossGray from 'assets/icons/cross-gray.svg';
 import crossWhite from 'assets/icons/cross-white.svg';
@@ -9,6 +9,7 @@ import { type PropsCreateTweet } from 'types';
 
 import { CreateTweet } from 'components/Tweets/CreateTweet';
 
+import { Menu } from './Menu';
 import { Logout } from './Logout';
 import {
   StlyedSidebar,
@@ -29,6 +30,7 @@ const Sidebar: React.FC<PropsCreateTweet> = ({ user, uid, addNewTweet }) => {
 
   return (
     <StlyedSidebar $modal={modal} $typeTheme={theme}>
+      <Menu />
       <StlyedSidebarBtnTweet onClick={handleModal}>Tweet</StlyedSidebarBtnTweet>
       {modal && (
         <StlyedSidebarModal>
