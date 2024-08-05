@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { serviceCollections } from 'services/collections';
-import { useAppSelector } from 'hooks/useRedux';
-import { getUID } from 'data/slices/sliceMemory';
-import { type TypeTweet, type TypeUser } from 'types';
+import { useProfile } from 'hooks/useProfile';
+import { type TypeTweet } from 'types';
 
 import { Sidebar } from 'components/Sidebar';
 import { CreateTweet } from 'components/Tweets/CreateTweet';
@@ -14,13 +13,17 @@ import { UserInfo } from 'components/User/UserInfo';
 import { StyledPofile, StyledUser } from './styled';
 
 const Profile: React.FC = () => {
-  const uid = useAppSelector(getUID);
-  const [viewModal, setViewModal] = useState(false);
-  const [user, setUser] = useState<TypeUser>({ gender: 'secret', tweets: [], uid: '' });
-
-  const [tweets, setTweets] = useState<TypeTweet[]>([]);
-
-  const [observerLikes, setObserverLikes] = useState(0);
+  const {
+    uid,
+    viewModal,
+    setViewModal,
+    user,
+    setUser,
+    tweets,
+    setTweets,
+    observerLikes,
+    setObserverLikes,
+  } = useProfile();
 
   const changeViewModal = () => {
     setViewModal(!viewModal);
