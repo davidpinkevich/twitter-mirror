@@ -32,6 +32,7 @@ export interface TypesTheme {
       text: string;
       btn: string;
     };
+    menu: string;
   };
   colors: {
     mainBlack: string;

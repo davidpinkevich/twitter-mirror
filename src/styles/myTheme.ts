@@ -34,6 +34,7 @@ const myTheme: DefaultTheme = {
       text: '16px',
       btn: '18px',
     },
+    menu: '18px',
   },
   colors: {
     mainBlack: '#000000',
