@@ -1,11 +1,11 @@
-import home from 'assets/icons/sidebar/home.svg';
-import explore from 'assets/icons/sidebar/explore.svg';
-import notifications from 'assets/icons/sidebar/notifications.svg';
-import messages from 'assets/icons/sidebar/messages.svg';
 import bookmarks from 'assets/icons/sidebar/bookmarks.svg';
+import explore from 'assets/icons/sidebar/explore.svg';
+import home from 'assets/icons/sidebar/home.svg';
 import lists from 'assets/icons/sidebar/lists.svg';
-import profile from 'assets/icons/sidebar/profile.svg';
+import messages from 'assets/icons/sidebar/messages.svg';
 import more from 'assets/icons/sidebar/more.svg';
+import notifications from 'assets/icons/sidebar/notifications.svg';
+import profile from 'assets/icons/sidebar/profile.svg';
 
 const menuItems = [
   { img: home, name: 'Home', path: '/feed' },

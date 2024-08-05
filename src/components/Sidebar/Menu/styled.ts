@@ -1,5 +1,6 @@
-import { ThemeMode } from 'constants/themeMode';
 import styled from 'styled-components';
+
+import { ThemeMode } from 'constants/themeMode';
 
 const StyledMenu = styled.div`
   font-size: ${(props) => props.theme.fontSizes.menu};

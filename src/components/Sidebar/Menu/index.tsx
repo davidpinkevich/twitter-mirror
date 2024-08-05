@@ -1,17 +1,17 @@
 import { Link, useLocation } from 'react-router-dom';
 
 import { menuItems } from 'constants/index';
-import { getTheme } from 'data/slices/sliceMemory';
 import { useAppSelector } from 'hooks/useRedux';
 import twitter from 'assets/icons/twitter.svg';
+import { getTheme } from 'data/slices/sliceMemory';
 
 import {
   StyledMenu,
-  StyledMenuLogo,
-  StyledMenuUl,
   StyledMenuItem,
   StyledMenuItemImg,
   StyledMenuItemName,
+  StyledMenuLogo,
+  StyledMenuUl,
 } from './styled';
 
 const Menu: React.FC = () => {

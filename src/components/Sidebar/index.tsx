@@ -9,8 +9,8 @@ import { type PropsCreateTweet } from 'types';
 
 import { CreateTweet } from 'components/Tweets/CreateTweet';
 
-import { Menu } from './Menu';
 import { Logout } from './Logout';
+import { Menu } from './Menu';
 import {
   StlyedSidebar,
   StlyedSidebarBtnTweet,
