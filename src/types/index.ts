@@ -42,6 +42,7 @@ export interface TypesTheme {
     ligthGray: string;
     mainBlue: string;
     mainRed: string;
+    likeRed: string;
   };
 }
 
@@ -90,6 +91,7 @@ export type TypeTweet = {
   text: string;
   id: number;
   timestamp: number;
+  likes: Array<string>;
   image: string | null;
 };
 
@@ -101,7 +103,7 @@ export interface TypeUser {
   gender: TypeGenders;
   date?: string;
   linkTG?: string;
-  uid?: string;
+  uid: string;
   photo?: string;
   tweets: Array<TypeTweet>;
 }
@@ -137,4 +139,12 @@ export interface PropsTweet {
   tweet: TypeTweet;
   user: TypeUser;
   deleteTweet: (id: number) => void;
+  addLike: (id: number) => void;
+}
+
+export interface PropsButtonLike {
+  tweet: TypeTweet;
+  uid: string;
+  id: number;
+  addLike: (id: number) => void;
 }

@@ -44,6 +44,7 @@ const myTheme: DefaultTheme = {
     mainBlue: '#1DA1F2',
     mainRed: '#cf0404',
     middleGray: '#B3B8BB',
+    likeRed: '#EF1C5C',
   },
 };
 
