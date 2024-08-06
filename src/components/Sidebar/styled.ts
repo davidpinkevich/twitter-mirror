@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { ThemeMode } from 'constants/themeMode';
+import { BREAKPOINTS } from 'constants/index';
 
 const StlyedSidebar = styled.div<{ $modal: boolean; $typeTheme: ThemeMode.WHITE | ThemeMode.DARK }>`
   display: flex;
@@ -24,11 +25,15 @@ const StlyedSidebar = styled.div<{ $modal: boolean; $typeTheme: ThemeMode.WHITE 
         background-color: black;
         opacity: 0.7;
       }`}
+
+  @media (max-width: ${BREAKPOINTS.xl}) {
+    min-width: auto;
+  }
 `;
 
 const StlyedSidebarBtnTweet = styled.button`
   font-weight: 700;
-  padding: 15px 30px;
+  padding: 0px 30px;
   height: 50px;
   width: 230px;
   border-radius: 60px;
@@ -36,6 +41,10 @@ const StlyedSidebarBtnTweet = styled.button`
   color: ${(props) => props.theme.colors.mainWhite};
   background-color: ${(props) => props.theme.colors.mainBlue};
   transition: all 0.2s;
+
+  @media (max-width: ${BREAKPOINTS.lg}) {
+    width: auto;
+  }
 
   &:disabled {
     background-color: #a5d9fa;

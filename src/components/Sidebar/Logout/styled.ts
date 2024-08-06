@@ -42,7 +42,7 @@ const StyledLogoutBtn = styled.button`
   font-weight: 700;
   border-radius: 60px;
   padding: 18px;
-  width: 230px;
+  width: 100%;
   transition: all 0.2s;
   &:hover {
     background-color: ${(props) => props.theme.colors.darkGray};

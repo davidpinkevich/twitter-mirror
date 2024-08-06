@@ -32,7 +32,7 @@ const StyledUserInfoBackWrapper = styled.div`
   position: relative;
   top: 0;
   left: 0;
-  max-width: 910px;
+  width: 100%;
   height: 280px;
 `;
 const StyledUserInfoBack = styled.img`

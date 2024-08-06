@@ -4,7 +4,7 @@ import { ThemeMode } from 'constants/themeMode';
 
 const StyledMenu = styled.div`
   font-size: ${(props) => props.theme.fontSizes.menu};
-  padding-top: 31px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 50px;
