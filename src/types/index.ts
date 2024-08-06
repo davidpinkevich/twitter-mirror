@@ -43,6 +43,7 @@ export interface TypesTheme {
     mainBlue: string;
     mainRed: string;
     likeRed: string;
+    whiteGray: string;
   };
 }
 
@@ -90,6 +91,7 @@ export interface PropsLoading {
 export type TypeTweet = {
   text: string;
   id: number;
+  name: string;
   timestamp: number;
   likes: Array<string>;
   image: string | null;
