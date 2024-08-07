@@ -9,6 +9,10 @@ const StyledPofile = styled.div`
   justify-content: center;
   align-items: flex-start;
   width: 100%;
+
+  @media (max-width: ${BREAKPOINTS.md}) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const StyledUser = styled.div`
@@ -20,6 +24,10 @@ const StyledUser = styled.div`
 
   @media (max-width: ${BREAKPOINTS.xl}) {
     max-width: 550px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.md}) {
+    max-width: 750px;
   }
 `;
 

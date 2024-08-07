@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
-const StyledUserHeaderWrap = styled.header`
-  max-width: 750px;
-  position: relative;
-  padding-bottom: 20px;
-`;
+import { BREAKPOINTS } from 'constants/index';
 
 const StyledUserHeaderWrapImg = styled.img`
   display: inline-block;
-  max-width: 750px;
+  width: 100%;
   object-fit: contain;
+  @media (max-width: ${BREAKPOINTS.xl}) {
+    max-width: 550px;
+  }
+  @media (max-width: ${BREAKPOINTS.md}) {
+    max-width: 100%;
+  }
 `;
 
 const StyledUserHeaderWrapAvatar = styled.img`
@@ -21,6 +23,11 @@ const StyledUserHeaderWrapAvatar = styled.img`
   width: 125px;
   height: 125px;
   object-fit: cover;
+
+  @media (max-width: ${BREAKPOINTS.xl}) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 const StyledUserHeader = styled.div`
@@ -59,12 +66,25 @@ const StyledUserHeaderBackText = styled.p`
   font-weight: 700;
 `;
 
+const StyledUserHeaderWrap = styled.div`
+  max-width: 750px;
+  position: relative;
+  padding-bottom: 20px;
+  @media (max-width: ${BREAKPOINTS.xl}) {
+    max-width: 550px;
+  }
+  @media (max-width: ${BREAKPOINTS.md}) {
+    min-width: 100%;
+    max-width: 100%;
+  }
+`;
+
 export {
   StyledUserHeader,
   StyledUserHeaderBack,
-  StyledUserHeaderWrap,
   StyledUserHeaderBackImg,
   StyledUserHeaderBackText,
+  StyledUserHeaderWrap,
   StyledUserHeaderWrapImg,
   StyledUserHeaderWrapAvatar,
 };

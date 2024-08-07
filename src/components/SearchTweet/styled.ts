@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from 'constants/index';
 import { ThemeMode } from 'constants/themeMode';
 
 const StyledSearchTweet = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  @media (max-width: ${BREAKPOINTS.md}) {
+    min-width: 100%;
+  }
 `;
 
 const StyledSearchTweetInputWrap = styled.div<{ $typeTheme: ThemeMode.WHITE | ThemeMode.DARK }>`

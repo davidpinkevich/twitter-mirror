@@ -4,7 +4,7 @@ const StyledCreateTweet = styled.div`
   border-radius: 6px;
   display: flex;
   gap: 20px;
-  padding: 20px;
+  margin-bottom: 20px;
 `;
 
 const StyledCreateEdit = styled.div`

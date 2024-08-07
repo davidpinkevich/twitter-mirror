@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from 'constants/index';
+
 const StyledUserInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,6 +18,10 @@ const StyledUserInfoAvatarWraper = styled.div`
   height: 120px;
   box-shadow: ${(props) => `inset 0px 0px 2px 4px ${props.theme.colors.ligthGray}`};
   background-color: ${(props) => props.theme.colors.mainWhite};
+  @media (max-width: ${BREAKPOINTS.md}) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 const StyledUserInfoAvatar = styled.img`

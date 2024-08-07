@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from 'constants/index';
 import { ThemeMode } from 'constants/themeMode';
 
 const StyledUserModalWrap = styled.div`
@@ -33,6 +34,12 @@ const StyledUserModal = styled.div<{ $typeTheme: ThemeMode.DARK | ThemeMode.WHIT
   top: 10%;
   left: calc(50% - 225px);
   border-radius: 16px;
+
+  @media (max-width: ${BREAKPOINTS.md}) {
+    padding: 15px 25px 25px 25px;
+    width: 320px;
+    left: calc(50% - 160px);
+  }
 `;
 
 const StyledModalClouse = styled.button`
@@ -49,6 +56,10 @@ const StyledModalClouse = styled.button`
 const StyledModalClouseImg = styled.img`
   width: 25px;
   height: 25px;
+  @media (max-width: ${BREAKPOINTS.md}) {
+    width: 18px;
+    height: 18px;
+  }
 `;
 
 const StyledUserButton = styled.button`

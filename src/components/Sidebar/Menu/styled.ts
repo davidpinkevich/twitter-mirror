@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from 'constants/index';
 import { ThemeMode } from 'constants/themeMode';
 
 const StyledMenu = styled.div`
@@ -8,6 +9,10 @@ const StyledMenu = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
+
+  @media (max-width: ${BREAKPOINTS.lg}) {
+    font-size: 16px;
+  }
 
   & a {
     color: inherit;
