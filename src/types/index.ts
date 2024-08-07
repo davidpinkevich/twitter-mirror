@@ -156,7 +156,17 @@ export interface PropsButtonLike {
   changeLike: (value: TypeTweet) => void;
 }
 
-export interface PropsSearchTweet {
-  targetTweet: TypeTweet | null;
+export interface PropsSearch {
+  targetTweet?: TypeTweet | null;
   setTargetTweet: (value: TypeTweet | null) => void;
+}
+
+export interface PropsSearchUser {
+  setTargetUser: (value: string) => void;
+}
+
+export interface PropsFeedHeader {
+  targetUser: string;
+  tweets: Array<TypeTweet>;
+  setTargetUser: (value: string) => void;
 }
