@@ -43,6 +43,7 @@ const StyledSearchTweetNF = styled.p`
 
 const StyledSearchTweetItems = styled.ul`
   border-radius: 10px;
+  overflow: hidden;
   box-shadow: ${(props) => `inset 0px 0px 1px 1px ${props.theme.colors.mainWhite}`};
 `;
 
@@ -56,14 +57,6 @@ const StyledSearchTweetItem = styled.li<{ $typeTheme: ThemeMode.WHITE | ThemeMod
   transition: all 0.2s;
   background-color: ${(props) =>
     props.$typeTheme === ThemeMode.WHITE ? props.theme.colors.whiteGray : 'inherit'};
-
-  &:first-child {
-    border-radius: 10px 10px 0px 0px;
-  }
-
-  &:last-child {
-    border-radius: 0px 0px 10px 10px;
-  }
 
   &:hover {
     background-color: ${(props) => props.theme.colors.darkGray};
