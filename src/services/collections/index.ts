@@ -1,12 +1,12 @@
 import { type User } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, setDoc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 import { serviceAuthentication } from 'services/auth';
 import { db, storage } from 'services/firebase';
 import { createID } from 'utils/createID';
 import { stringDate } from 'utils/getDateValues';
-import { TypesFormModal, TypeUser } from 'types';
+import { TypesFormModal, TypeTweet, TypeUser } from 'types';
 
 class CollectionsService {
   async addUserWithEmail(
@@ -24,7 +24,6 @@ class CollectionsService {
         date: stringDate(date),
         uid,
         tweets: [],
-        likes: [],
       });
     } catch (error) {
       console.log(error);
@@ -39,7 +38,6 @@ class CollectionsService {
         uid: user?.uid,
         photo: user?.photoURL,
         tweets: [],
-        likes: [],
       });
     } catch (error) {
       console.log(error);
@@ -73,6 +71,7 @@ class CollectionsService {
       await updateDoc(doc(db, 'users', uid), {
         ...user,
         ...data,
+        tweets: user.tweets.map((item) => ({ ...item, photo: downloadURL })),
         gender,
         photo: downloadURL,
       });
@@ -89,6 +88,7 @@ class CollectionsService {
         ...user,
         ...data,
         gender,
+        tweets: user.tweets.map((item) => ({ ...item, linkTG: data?.linkTG ?? null })),
       });
     } catch (error) {
       console.log(error);
@@ -104,10 +104,14 @@ class CollectionsService {
         const downloadURL = await getDownloadURL(mountainsRef);
         const tweet = {
           text,
+          name: user.name,
           id: createID(),
           timestamp: Date.now(),
+          photo: user?.photo ?? null,
           image: downloadURL,
           likes: [],
+          linkTG: user?.linkTG ?? null,
+          uid,
         };
         await updateDoc(doc(db, 'users', uid), {
           ...user,
@@ -115,7 +119,17 @@ class CollectionsService {
         });
         return tweet;
       } else {
-        const tweet = { text, id: createID(), timestamp: Date.now(), image: null, likes: [] };
+        const tweet = {
+          text,
+          name: user.name,
+          id: createID(),
+          timestamp: Date.now(),
+          photo: user.photo,
+          linkTG: user?.linkTG ?? null,
+          image: null,
+          likes: [],
+          uid,
+        };
         await updateDoc(doc(db, 'users', uid), {
           ...user,
           tweets: [...user.tweets, tweet],
@@ -140,27 +154,63 @@ class CollectionsService {
     }
   }
 
-  async changeLike(user: TypeUser, uid: string, tweetID: number) {
+  async changeLike(user: TypeUser, tweet: TypeTweet) {
+    const userTweet = await this.viewUser(tweet.uid);
     try {
-      const tweets = user.tweets.map((item) => {
-        if (item.id === tweetID && item.likes.includes(uid)) {
+      const tweets = userTweet.tweets.map((item) => {
+        if (tweet.id === item.id && item.likes.includes(user.uid)) {
           const newLikes = [...item.likes];
-          const index = newLikes.findIndex((item) => item === uid);
-          newLikes.splice(index, 1);
-          return { ...item, likes: newLikes };
-        } else if (item.id === tweetID && !item.likes.includes(uid)) {
+          const index = newLikes.findIndex((item) => item.includes(user.uid));
+          if (index !== -1) newLikes.splice(index, 1);
+          return { ...tweet, likes: newLikes };
+        } else if (tweet.id === item.id && !item.likes.includes(user.uid)) {
           const newLikes = [...item.likes];
-          newLikes.push(uid);
+          newLikes.push(user.uid);
           return { ...item, likes: newLikes };
         } else {
           return item;
         }
       });
-      await updateDoc(doc(db, 'users', uid), {
-        ...user,
+      await updateDoc(doc(db, 'users', tweet.uid), {
+        ...userTweet,
         tweets,
       });
-      return tweets.reduce((a, b) => a + b.likes.length, 0);
+      return tweets.filter((item) => item.id === tweet.id)[0];
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  async searchTweet(input: string) {
+    try {
+      const docRef = collection(db, 'users');
+      const docSnap = await getDocs(docRef);
+      const tweets = docSnap.docs.map((item) => {
+        const body = item.data();
+        const newItem = {
+          name: body.name,
+          linkTG: body.linkTG,
+          photo: body.photo,
+          tweets: body.tweets,
+        };
+        return newItem;
+      }) as Array<{
+        name: string;
+        linkTG: string;
+        photo: string;
+        tweets: Array<TypeTweet>;
+      }>;
+      const result = tweets.flatMap((user) => {
+        return user.tweets.map((tweet) => ({
+          ...tweet,
+          name: user.name,
+          photo: user.photo,
+          linkTG: user.linkTG,
+        }));
+      });
+
+      return result.filter((item) => item.text.toLowerCase().includes(input.trim().toLowerCase()));
     } catch (error) {
       console.log(error);
       throw error;
