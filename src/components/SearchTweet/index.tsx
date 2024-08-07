@@ -2,10 +2,10 @@ import { ChangeEvent } from 'react';
 
 import { PAGES } from 'constants/index';
 import { ThemeMode } from 'constants/themeMode';
-import { useSearchTweet } from 'hooks/useSearchTweet';
+import { useSearch } from 'hooks/useSearch';
 import glassBlack from 'assets/icons/glass-black.svg';
 import glassWhite from 'assets/icons/glass-white.svg';
-import { type PropsSearchTweet } from 'types';
+import { type PropsSearch } from 'types';
 
 import { Loading } from 'components/Loading';
 
@@ -24,8 +24,11 @@ import {
   StyledSearchTweetText,
 } from './styled';
 
-const SearchTweet: React.FC<PropsSearchTweet> = ({ targetTweet, setTargetTweet }) => {
-  const { value, setValue, page, setPage, theme, loading, tweets } = useSearchTweet(targetTweet);
+const SearchTweet: React.FC<PropsSearch> = ({ targetTweet, setTargetTweet }) => {
+  const { value, setValue, page, setPage, theme, loading, tweets } = useSearch(
+    'tweets',
+    targetTweet
+  );
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
