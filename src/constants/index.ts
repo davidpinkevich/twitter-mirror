@@ -4,6 +4,7 @@ import { ERRORS } from './errorInfoForm';
 import { PATTERNS } from './formPatterns';
 import { GENDERS } from './genders';
 import { menuItems } from './menuItems';
+import { PAGES } from './pages';
 import { Paths } from './paths';
 import { ThemeMode } from './themeMode';
 
@@ -17,4 +18,5 @@ export {
   ThemeMode,
   GENDERS,
   menuItems,
+  PAGES,
 };
