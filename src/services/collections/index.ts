@@ -216,6 +216,41 @@ class CollectionsService {
       throw error;
     }
   }
+
+  async getAllTweets() {
+    try {
+      const docRef = collection(db, 'users');
+      const docSnap = await getDocs(docRef);
+      const arr: TypeUser[] = [];
+      docSnap.forEach((item) => {
+        arr.push(item.data() as TypeUser);
+      });
+      return arr
+        .map((item) => item.tweets)
+        .flat(1)
+        .sort((a, b) => a.timestamp - b.timestamp);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  async getAllUsers(uid: string, input: string) {
+    try {
+      const docRef = collection(db, 'users');
+      const docSnap = await getDocs(docRef);
+      const arr: TypeUser[] = [];
+      docSnap.forEach((item) => {
+        arr.push(item.data() as TypeUser);
+      });
+      return arr
+        .filter((item) => item.uid !== uid)
+        .filter((item) => (item.name as string).toLowerCase().includes(input.trim().toLowerCase()));
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 }
 
 const serviceCollections = new CollectionsService();
