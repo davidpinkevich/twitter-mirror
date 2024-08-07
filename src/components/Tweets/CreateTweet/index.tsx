@@ -4,7 +4,7 @@ import { serviceCollections } from 'services/collections';
 import addImage from 'assets/icons/add-image.svg';
 import cross from 'assets/icons/cross-blue.svg';
 import plug from 'assets/images/plug.svg';
-import { type PropsCreateTweet } from 'types';
+import { type PropsCreateTweet,TypeTweet } from 'types';
 
 import { Loading } from 'components/Loading';
 
@@ -45,7 +45,7 @@ const CreateTweet: React.FC<PropsCreateTweet> = ({ user, uid, addNewTweet }) => 
   const handleCreate = async () => {
     try {
       setLoading(true);
-      const tweet = await serviceCollections.createTweet(user, uid, value, file);
+      const tweet = (await serviceCollections.createTweet(user, uid, value, file)) as TypeTweet;
       addNewTweet(tweet);
       setFile(null);
       setValue('');

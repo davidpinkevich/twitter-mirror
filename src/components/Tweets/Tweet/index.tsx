@@ -21,15 +21,14 @@ import {
   StyledTweetUserP,
 } from './styled';
 
-const Tweet: React.FC<PropsTweet> = ({ tweet, user, deleteTweet, addLike }) => {
-  const { name, linkTG, uid } = user;
-  const { image, text, timestamp, id } = tweet;
+const Tweet: React.FC<PropsTweet> = ({ tweet, user, deleteTweet, changeLike, targetUID }) => {
+  const { image, text, timestamp, id, linkTG, name, photo } = tweet;
 
   const theme = useAppSelector(getTheme);
 
   return (
     <StyledTweet>
-      <StyledTweetAvatar src={user.photo ?? plug} />
+      <StyledTweetAvatar src={photo ?? plug} />
       <StyledTweetInfo>
         <StyledTweetUser>
           {name && <StyledTweetUserName>{name}</StyledTweetUserName>}
@@ -38,13 +37,15 @@ const Tweet: React.FC<PropsTweet> = ({ tweet, user, deleteTweet, addLike }) => {
         </StyledTweetUser>
         <StyledTweetText>{text}</StyledTweetText>
         {image && <StyledTweetImage src={image} />}
-        <ButtonLike addLike={addLike} tweet={tweet} uid={uid} id={id} />
+        <ButtonLike changeLike={changeLike} tweet={tweet} user={user} />
       </StyledTweetInfo>
-      <StyledDeleteImage
-        onClick={() => deleteTweet(id)}
-        src={theme === ThemeMode.WHITE ? crossGray : crossWhite}
-        alt="cross"
-      />
+      {targetUID === tweet.uid && (
+        <StyledDeleteImage
+          onClick={() => deleteTweet(id)}
+          src={theme === ThemeMode.WHITE ? crossGray : crossWhite}
+          alt="cross"
+        />
+      )}
     </StyledTweet>
   );
 };

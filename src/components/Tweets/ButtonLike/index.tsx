@@ -6,20 +6,24 @@ import whiteLike from 'assets/icons/white-like.svg';
 import { getTheme } from 'data/slices/sliceMemory';
 import { PropsButtonLike } from 'types';
 
-import { StyledButtonLike, StyledButtonLikeCount,StyledButtonLikeImg } from './styled';
+import { StyledButtonLike, StyledButtonLikeCount, StyledButtonLikeImg } from './styled';
 
-const ButtonLike: React.FC<PropsButtonLike> = ({ tweet, uid, addLike, id }) => {
+const ButtonLike: React.FC<PropsButtonLike> = ({ tweet, user, changeLike }) => {
   const theme = useAppSelector(getTheme);
 
   return (
-    <StyledButtonLike onClick={() => addLike(id)}>
+    <StyledButtonLike onClick={() => changeLike(tweet)}>
       <StyledButtonLikeImg
         src={
-          tweet.likes.includes(uid) ? redLike : theme === ThemeMode.WHITE ? blackLike : whiteLike
+          tweet.likes.includes(user.uid)
+            ? redLike
+            : theme === ThemeMode.WHITE
+            ? blackLike
+            : whiteLike
         }
         alt="like"
       />
-      <StyledButtonLikeCount $target={tweet.likes.includes(uid)}>
+      <StyledButtonLikeCount $target={tweet.likes.includes(user.uid)}>
         {tweet.likes.length ? tweet.likes.length : ''}
       </StyledButtonLikeCount>
     </StyledButtonLike>

@@ -4,6 +4,7 @@ import { serviceCollections } from 'services/collections';
 import { useProfile } from 'hooks/useProfile';
 import { type TypeTweet } from 'types';
 
+import { SearchTweet } from 'components/SearchTweet';
 import { Sidebar } from 'components/Sidebar';
 import { CreateTweet } from 'components/Tweets/CreateTweet';
 import { Tweet } from 'components/Tweets/Tweet';
@@ -23,6 +24,8 @@ const Profile: React.FC = () => {
     setTweets,
     observerLikes,
     setObserverLikes,
+    targetTweet,
+    setTargetTweet,
   } = useProfile();
 
   const changeViewModal = () => {
@@ -36,11 +39,13 @@ const Profile: React.FC = () => {
   const deleteTweet = async (id: number) => {
     await serviceCollections.deleteTweet(user, uid, id);
     setTweets([...tweets].filter((item) => item.id !== id));
+    setTargetTweet(null);
   };
 
-  const addLike = async (id: number) => {
-    const tweets = await serviceCollections.changeLike(user, uid, id);
-    setObserverLikes(tweets);
+  const changeLike = async (tweet: TypeTweet, type?: string) => {
+    const target = await serviceCollections.changeLike(user, tweet);
+    if (type === 'target') setTargetTweet(target);
+    setObserverLikes(!observerLikes);
   };
 
   useEffect(() => {
@@ -50,26 +55,39 @@ const Profile: React.FC = () => {
       setUser(data);
     };
     fetchData();
-  }, [viewModal, uid, tweets.length, observerLikes]);
+  }, [viewModal, uid, tweets.length, observerLikes, targetTweet]);
 
   return (
     <StyledPofile>
       <Sidebar user={user} uid={uid} addNewTweet={addNewTweet} />
       <StyledUser>
-        <UserHeader name={user?.name} />
-        <UserInfo user={user} viewModal={viewModal} changeViewModal={changeViewModal} />
-        <CreateTweet user={user} uid={uid} addNewTweet={addNewTweet} />
-        {[...tweets].reverse().map((item) => (
+        <UserHeader name={user?.name} targetTweet={targetTweet} setTargetTweet={setTargetTweet} />
+        {!targetTweet ? (
+          <>
+            <UserInfo user={user} viewModal={viewModal} changeViewModal={changeViewModal} />
+            <CreateTweet user={user} uid={uid} addNewTweet={addNewTweet} />
+            {[...tweets].reverse().map((item) => (
+              <Tweet
+                key={item.id}
+                tweet={item}
+                user={user}
+                targetUID={uid}
+                deleteTweet={deleteTweet}
+                changeLike={changeLike}
+              />
+            ))}
+          </>
+        ) : (
           <Tweet
-            key={item.id}
-            tweet={item}
+            tweet={targetTweet}
+            targetUID={uid}
             user={user}
             deleteTweet={deleteTweet}
-            addLike={addLike}
+            changeLike={() => changeLike(targetTweet, 'target')}
           />
-        ))}
+        )}
       </StyledUser>
-      <div>right</div>
+      <SearchTweet targetTweet={targetTweet} setTargetTweet={setTargetTweet} />
     </StyledPofile>
   );
 };
