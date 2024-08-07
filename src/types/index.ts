@@ -92,6 +92,9 @@ export type TypeTweet = {
   text: string;
   id: number;
   name: string;
+  uid: string;
+  linkTG: string | null;
+  photo: string;
   timestamp: number;
   likes: Array<string>;
   image: string | null;
@@ -129,6 +132,8 @@ export interface PropsUserInfo {
 
 export interface PropsUserHeader {
   name: string | undefined;
+  targetTweet: TypeTweet | null;
+  setTargetTweet: (value: TypeTweet | null) => void;
 }
 
 export interface PropsCreateTweet {
@@ -140,13 +145,18 @@ export interface PropsCreateTweet {
 export interface PropsTweet {
   tweet: TypeTweet;
   user: TypeUser;
+  targetUID: string;
   deleteTweet: (id: number) => void;
-  addLike: (id: number) => void;
+  changeLike: (value: TypeTweet) => void;
 }
 
 export interface PropsButtonLike {
   tweet: TypeTweet;
-  uid: string;
-  id: number;
-  addLike: (id: number) => void;
+  user: TypeUser;
+  changeLike: (value: TypeTweet) => void;
+}
+
+export interface PropsSearchTweet {
+  targetTweet: TypeTweet | null;
+  setTargetTweet: (value: TypeTweet | null) => void;
 }
