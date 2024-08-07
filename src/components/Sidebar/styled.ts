@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { ThemeMode } from 'constants/themeMode';
 import { BREAKPOINTS } from 'constants/index';
+import { ThemeMode } from 'constants/themeMode';
 
 const StlyedSidebar = styled.div<{ $modal: boolean; $typeTheme: ThemeMode.WHITE | ThemeMode.DARK }>`
   display: flex;
@@ -33,7 +33,7 @@ const StlyedSidebar = styled.div<{ $modal: boolean; $typeTheme: ThemeMode.WHITE 
 
 const StlyedSidebarBtnTweet = styled.button`
   font-weight: 700;
-  padding: 0px 30px;
+  padding: 10px 30px;
   height: 50px;
   width: 230px;
   border-radius: 60px;

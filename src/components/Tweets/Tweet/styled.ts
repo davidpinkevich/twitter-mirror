@@ -9,6 +9,7 @@ const StyledTweet = styled.div`
 
 const StyledTweetAvatar = styled.img`
   border-radius: 50%;
+  flex-shrink: 0;
   box-shadow: ${(props) => `inset 0px 0px 2px 4px ${props.theme.colors.ligthGray}`};
   width: 50px;
   height: 50px;
