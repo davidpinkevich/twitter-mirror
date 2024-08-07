@@ -1,6 +1,6 @@
-import { BREAKPOINTS } from 'constants/index';
-
 import styled from 'styled-components';
+
+import { BREAKPOINTS } from 'constants/index';
 
 const StyledEnter = styled.div`
   padding: 20px;
@@ -8,6 +8,9 @@ const StyledEnter = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 20px;
+  & a {
+    color: inherit;
+  }
 `;
 
 const StyledEnterTitle = styled.h1`
@@ -63,6 +66,7 @@ const StyledEnterBtn = styled.button`
   justify-content: center;
   font-size: ${(props) => props.theme.fontSizes.enter.btn};
   background-color: inherit;
+  color: inherit;
   border: ${(props) => `1px solid ${props.theme.colors.ligthGray}`};
   gap: 10px;
   border-radius: 42px;

@@ -16,14 +16,34 @@ export interface TypesTheme {
     dateSelect: {
       item: string;
     };
+    user: {
+      editBtn: string;
+      headerName: string;
+      createTweet: string;
+    };
+    home: {
+      name: string;
+    };
+    tweet: {
+      h2: string;
+      p: string;
+    };
+    logout: {
+      text: string;
+      btn: string;
+    };
+    menu: string;
   };
   colors: {
     mainBlack: string;
     mainWhite: string;
     darkGray: string;
+    middleGray: string;
     ligthGray: string;
     mainBlue: string;
     mainRed: string;
+    likeRed: string;
+    whiteGray: string;
   };
 }
 
@@ -38,6 +58,14 @@ export interface TypesFormSignUp {
 export interface TypesFormLogIn {
   login: string;
   password: string;
+}
+
+export interface TypesFormModal {
+  name: string;
+  secondName: string;
+  password: string;
+  linkTG: string;
+  gender: TypeGenders;
 }
 
 export type TypeDate = { month: string; day: string; year: string };
@@ -58,4 +86,77 @@ export interface PropsDateSelect {
 
 export interface PropsLoading {
   text: string;
+}
+
+export type TypeTweet = {
+  text: string;
+  id: number;
+  name: string;
+  uid: string;
+  linkTG: string | null;
+  photo: string;
+  timestamp: number;
+  likes: Array<string>;
+  image: string | null;
+};
+
+export interface TypeUser {
+  number?: null | string;
+  name?: string;
+  secondName?: string;
+  email?: string;
+  gender: TypeGenders;
+  date?: string;
+  linkTG?: string;
+  uid: string;
+  photo?: string;
+  tweets: Array<TypeTweet>;
+}
+
+export type TypeGenders = 'female' | 'male' | 'secret';
+
+export interface PropsEditButton {
+  changeModal: () => void;
+}
+
+export interface PropsUserModal {
+  user: TypeUser;
+  changeModal: () => void;
+}
+
+export interface PropsUserInfo {
+  user: TypeUser;
+  viewModal: boolean;
+  changeViewModal: () => void;
+}
+
+export interface PropsUserHeader {
+  name: string | undefined;
+  targetTweet: TypeTweet | null;
+  setTargetTweet: (value: TypeTweet | null) => void;
+}
+
+export interface PropsCreateTweet {
+  user: TypeUser;
+  uid: string;
+  addNewTweet: (value: TypeTweet) => void;
+}
+
+export interface PropsTweet {
+  tweet: TypeTweet;
+  user: TypeUser;
+  targetUID: string;
+  deleteTweet: (id: number) => void;
+  changeLike: (value: TypeTweet) => void;
+}
+
+export interface PropsButtonLike {
+  tweet: TypeTweet;
+  user: TypeUser;
+  changeLike: (value: TypeTweet) => void;
+}
+
+export interface PropsSearchTweet {
+  targetTweet: TypeTweet | null;
+  setTargetTweet: (value: TypeTweet | null) => void;
 }

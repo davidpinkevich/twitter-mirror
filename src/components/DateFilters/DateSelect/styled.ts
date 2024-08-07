@@ -1,6 +1,6 @@
-import { BREAKPOINTS } from 'constants/index';
-
 import styled from 'styled-components';
+
+import { BREAKPOINTS } from 'constants/index';
 
 const StyledDateSelect = styled.div`
   color: ${(props) => props.theme.colors.darkGray};

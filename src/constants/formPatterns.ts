@@ -1,5 +1,6 @@
 const PATTERNS = {
   name: { required: true, minLength: 3, pattern: /^[A-Z][a-z]{2,}$/ },
+  linkTG: { pattern: /^@[\w]{2,}/ },
   number: { required: true, minLength: 11, maxLength: 11 },
   email: {
     required: true,

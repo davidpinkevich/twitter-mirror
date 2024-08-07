@@ -12,6 +12,7 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'react-hooks/rules-of-hooks': 'error',
+    'react/display-name': 'off',
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-no-undef': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
@@ -29,6 +30,7 @@ module.exports = {
             '^react-redux',
             '^@reduxjs/toolkit',
             '^redux-persist',
+            'styled-components',
             '^react-hook-form',
             '^firebase',
           ],

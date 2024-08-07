@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { serviceAuthentication } from 'services/auth';
 import { serviceCollections } from 'services/collections';
@@ -20,10 +20,14 @@ import {
 
 const Enter: React.FC = () => {
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
+
   const handleGoogle = async () => {
     const user = await serviceAuthentication.enterWithGoogle();
     dispatch(changeUID(user.uid));
-    serviceCollections.addUserWithGoogle(user.uid, user);
+    await serviceCollections.addUserWithGoogle(user.uid, user);
+    navigate(Paths.profile);
   };
 
   return (

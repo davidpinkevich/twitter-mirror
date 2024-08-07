@@ -29,6 +29,9 @@ const ERRORS = {
     required: 'This field is required',
     validate: 'Enter your phone number or email login',
   },
+  linkTG: {
+    pattern: 'Enter your telegram account with @',
+  },
 };
 
 export { ERRORS };

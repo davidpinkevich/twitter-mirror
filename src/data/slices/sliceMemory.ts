@@ -1,8 +1,10 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
+import { ThemeMode } from 'constants/themeMode';
 const initialState = {
   UID: '',
+  theme: ThemeMode.WHITE,
 };
 
 const sliceMemory = createSlice({
@@ -12,13 +14,20 @@ const sliceMemory = createSlice({
     changeUID: (state, action: PayloadAction<string>) => {
       state.UID = action.payload;
     },
+    changeTheme: (state) => {
+      state.theme = state.theme === ThemeMode.DARK ? ThemeMode.WHITE : ThemeMode.DARK;
+    },
+    logOut: (state) => {
+      state.UID = '';
+    },
   },
   selectors: {
     getUID: (state) => state.UID,
+    getTheme: (state) => state.theme,
   },
 });
 
-export const { changeUID } = sliceMemory.actions;
-export const { getUID } = sliceMemory.selectors;
+export const { changeUID, changeTheme, logOut } = sliceMemory.actions;
+export const { getUID, getTheme } = sliceMemory.selectors;
 
 export default sliceMemory.reducer;

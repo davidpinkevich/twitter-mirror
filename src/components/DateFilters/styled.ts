@@ -1,6 +1,6 @@
-import { BREAKPOINTS } from 'constants/index';
-
 import styled from 'styled-components';
+
+import { BREAKPOINTS } from 'constants/index';
 
 const StyledDateFilters = styled.div`
   text-align: left;
