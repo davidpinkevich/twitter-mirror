@@ -5,7 +5,7 @@ import { ThemeMode } from 'constants/themeMode';
 import { useSearch } from 'hooks/useSearch';
 import glassBlack from 'assets/icons/glass-black.svg';
 import glassWhite from 'assets/icons/glass-white.svg';
-import { type PropsSearch } from 'types';
+import { type PropsSearchUser } from 'types';
 
 import { Loading } from 'components/Loading';
 
@@ -22,24 +22,29 @@ import {
   StyledSearchTweetNF,
   StyledSearchTweetShow,
   StyledSearchTweetText,
-} from './styled';
+} from '../SearchTweet/styled';
 
-const SearchTweet: React.FC<PropsSearch> = ({ targetTweet, setTargetTweet }) => {
-  const { value, setValue, page, setPage, theme, loading, tweets, setTweets } = useSearch(
-    'tweets',
-    targetTweet
-  );
+const SearchUser: React.FC<PropsSearchUser> = ({ setTargetUser }) => {
+  const { value, setValue, page, setPage, theme, loading, users, setUsers } = useSearch('users');
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setTweets([]);
+    setUsers([]);
     setValue(event.target.value);
     setPage(1);
+  };
+
+  const handleClick = (uid: string) => {
+    setTargetUser(uid);
   };
 
   return (
     <StyledSearchTweet>
       <StyledSearchTweetInputWrap $typeTheme={theme}>
-        <StyledSearchTweetInput value={value} onChange={handleInput} placeholder="Search Twitter" />
+        <StyledSearchTweetInput
+          value={value}
+          onChange={handleInput}
+          placeholder="Search Profiles"
+        />
         <StyledSearchTweetInputImg
           src={theme === ThemeMode.WHITE ? glassBlack : glassWhite}
           alt="glass"
@@ -48,39 +53,35 @@ const SearchTweet: React.FC<PropsSearch> = ({ targetTweet, setTargetTweet }) => 
       {loading && <Loading text="Search" />}
       {!loading && !!value.length && (
         <StyledSearchTweetItems>
-          {tweets &&
-            tweets.slice(0, page * PAGES.search.value).map((item, index) => {
+          {users &&
+            users.slice(0, page * PAGES.search.value).map((item, index) => {
               return (
                 <StyledSearchTweetItem
+                  onClick={() => handleClick(item.uid)}
                   $typeTheme={theme}
-                  onClick={() => setTargetTweet(item)}
                   key={index}
                 >
                   {item.photo && <StyledSearchTweetItemAvatar src={item.photo} alt="avatar" />}
                   <StyledSearchTweetItemBlock>
                     <StyledSearchTweetName>{item.name}</StyledSearchTweetName>
-                    <StyledSearchTweetText>
-                      {item.text.length > PAGES.search.text
-                        ? item.text.slice(0, PAGES.search.text) + '...'
-                        : item.text}
-                    </StyledSearchTweetText>
+                    <StyledSearchTweetText>{item.linkTG}</StyledSearchTweetText>
                   </StyledSearchTweetItemBlock>
                 </StyledSearchTweetItem>
               );
             })}
         </StyledSearchTweetItems>
       )}
-      {tweets &&
+      {users &&
         value &&
         !loading &&
-        tweets.length > tweets.slice(0, page * PAGES.search.value).length && (
+        users.length > users.slice(0, page * PAGES.search.value).length && (
           <StyledSearchTweetShow onClick={() => setPage(page + 1)}>Show more</StyledSearchTweetShow>
         )}
-      {!tweets?.length && !loading && value && (
-        <StyledSearchTweetNF>Tweet not found</StyledSearchTweetNF>
+      {!loading && !users?.length && value && (
+        <StyledSearchTweetNF>User not found</StyledSearchTweetNF>
       )}
     </StyledSearchTweet>
   );
 };
 
-export { SearchTweet };
+export { SearchUser };

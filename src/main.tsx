@@ -9,6 +9,7 @@ import { GlobalStyles } from 'styles/GlobalStyles';
 import { myTheme } from 'styles/myTheme';
 
 import { App } from 'components/App/App';
+import { ErrorBoundary } from 'components/ErrorBoundary';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <ThemeProvider theme={myTheme}>
           <GlobalStyles />
-          <App />
+          <ErrorBoundary>
+            <App />
+          </ErrorBoundary>
         </ThemeProvider>
       </BrowserRouter>
     </PersistGate>

@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import { BREAKPOINTS } from 'constants/index';
 import { ThemeMode } from 'constants/themeMode';
 
-const StlyedSidebar = styled.div<{ $modal: boolean; $typeTheme: ThemeMode.WHITE | ThemeMode.DARK }>`
+const StlyedSidebar = styled.div<{
+  $openModal: boolean;
+  $modal: boolean;
+  $typeTheme: ThemeMode.WHITE | ThemeMode.DARK;
+}>`
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -29,13 +33,25 @@ const StlyedSidebar = styled.div<{ $modal: boolean; $typeTheme: ThemeMode.WHITE 
   @media (max-width: ${BREAKPOINTS.xl}) {
     min-width: auto;
   }
+
+  @media (max-width: ${BREAKPOINTS.md}) {
+    position: absolute;
+    padding: 20px;
+    min-height: 100vh;
+    z-index: 15;
+    top: 0;
+    transition: all 0.2s;
+    padding-bottom: 60px;
+    gap: 20px;
+    left: ${(props) => (props.$openModal ? 0 : '-100%')};
+    width: 100%;
+  }
 `;
 
 const StlyedSidebarBtnTweet = styled.button`
   font-weight: 700;
   padding: 10px 30px;
   height: 50px;
-  width: 230px;
   border-radius: 60px;
   font-size: ${(props) => props.theme.fontSizes.user.createTweet};
   color: ${(props) => props.theme.colors.mainWhite};
@@ -58,6 +74,7 @@ const StlyedSidebarBtnTweet = styled.button`
 
 const StlyedSidebarModalH2 = styled.h2`
   font-size: 24px;
+  margin-bottom: 15px;
 `;
 
 const StlyedSidebarModal = styled.div`
@@ -70,6 +87,11 @@ const StlyedSidebarModal = styled.div`
   left: calc(50% - 250px);
   padding: 20px 20px 0px 20px;
   width: 500px;
+
+  @media (max-width: ${BREAKPOINTS.lg}) {
+    width: 320px;
+    left: calc(50% - 160px);
+  }
 `;
 
 const StlyedSidebarModalClouse = styled.img`

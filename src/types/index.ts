@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface TypesTheme {
   fontSizes: {
     enter: {
@@ -156,7 +158,30 @@ export interface PropsButtonLike {
   changeLike: (value: TypeTweet) => void;
 }
 
-export interface PropsSearchTweet {
-  targetTweet: TypeTweet | null;
+export interface PropsSearch {
+  targetTweet?: TypeTweet | null;
   setTargetTweet: (value: TypeTweet | null) => void;
+}
+
+export interface PropsSearchUser {
+  setTargetUser: (value: string) => void;
+}
+
+export interface PropsFeedHeader {
+  targetUser: string;
+  tweets: Array<TypeTweet>;
+  setTargetUser: (value: string) => void;
+}
+
+export interface TypeFallback {
+  logger: string;
+}
+
+export interface TypeErrorBoundaryProps {
+  children?: ReactNode;
+}
+
+export interface TypeErrorBoundaryState {
+  hasError: boolean;
+  info: string;
 }

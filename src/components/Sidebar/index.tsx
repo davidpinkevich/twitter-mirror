@@ -4,7 +4,7 @@ import { ThemeMode } from 'constants/index';
 import { useAppSelector } from 'hooks/useRedux';
 import crossGray from 'assets/icons/cross-gray.svg';
 import crossWhite from 'assets/icons/cross-white.svg';
-import { getTheme } from 'data/slices/sliceMemory';
+import { getModal, getTheme } from 'data/slices/sliceMemory';
 import { type PropsCreateTweet } from 'types';
 
 import { CreateTweet } from 'components/Tweets/CreateTweet';
@@ -23,13 +23,14 @@ const Sidebar: React.FC<PropsCreateTweet> = ({ user, uid, addNewTweet }) => {
   const [modal, setModal] = useState(false);
 
   const theme = useAppSelector(getTheme);
+  const openModal = useAppSelector(getModal);
 
   const handleModal = () => {
     setModal(!modal);
   };
 
   return (
-    <StlyedSidebar $modal={modal} $typeTheme={theme}>
+    <StlyedSidebar $openModal={openModal} $modal={modal} $typeTheme={theme}>
       <Menu />
       <StlyedSidebarBtnTweet onClick={handleModal}>Tweet</StlyedSidebarBtnTweet>
       {modal && (

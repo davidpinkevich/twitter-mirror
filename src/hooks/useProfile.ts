@@ -9,6 +9,7 @@ const useProfile = () => {
   const uid = useAppSelector(getUID);
   const [viewModal, setViewModal] = useState(false);
   const [targetTweet, setTargetTweet] = useState<null | TypeTweet>(null);
+  const [targetUser, setTargetUser] = useState('');
   const [user, setUser] = useState<TypeUser>({ gender: 'secret', tweets: [], uid: '' });
 
   const [tweets, setTweets] = useState<TypeTweet[]>([]);
@@ -27,6 +28,8 @@ const useProfile = () => {
     setObserverLikes,
     targetTweet,
     setTargetTweet,
+    targetUser,
+    setTargetUser,
   };
 };
 

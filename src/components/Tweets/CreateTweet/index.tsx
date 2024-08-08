@@ -4,7 +4,7 @@ import { serviceCollections } from 'services/collections';
 import addImage from 'assets/icons/add-image.svg';
 import cross from 'assets/icons/cross-blue.svg';
 import plug from 'assets/images/plug.svg';
-import { type PropsCreateTweet,TypeTweet } from 'types';
+import { type PropsCreateTweet, TypeTweet } from 'types';
 
 import { Loading } from 'components/Loading';
 

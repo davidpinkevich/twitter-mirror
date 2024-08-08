@@ -4,8 +4,10 @@ import { Paths } from 'constants/index';
 import { useAppSelector } from 'hooks/useRedux';
 import { getTheme } from 'data/slices/sliceMemory';
 
+import { Feed } from 'pages/Feed';
 import { Home } from 'pages/Home';
 import { LogIn } from 'pages/LogIn';
+import { NotFound } from 'pages/NotFound';
 import { Profile } from 'pages/Profile';
 import { SignUp } from 'pages/SignUp';
 import { ProtectedRoute } from 'components/ProtectedRoute';
@@ -44,6 +46,18 @@ const routes = [
         <Profile />
       </ProtectedRoute>
     ),
+  },
+  {
+    path: Paths.feed,
+    element: (
+      <ProtectedRoute path={Paths.base}>
+        <Feed />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '*',
+    element: <NotFound />,
   },
 ];
 

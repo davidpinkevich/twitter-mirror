@@ -2,12 +2,11 @@ import styled from 'styled-components';
 
 import { BREAKPOINTS } from 'constants/index';
 
-const StyledPofile = styled.div`
+const StyledFeed = styled.div`
   display: flex;
+  justify-content: center;
   gap: 20px;
   padding: 20px;
-  justify-content: center;
-  align-items: flex-start;
   width: 100%;
 
   @media (max-width: ${BREAKPOINTS.md}) {
@@ -16,20 +15,18 @@ const StyledPofile = styled.div`
   }
 `;
 
-const StyledUser = styled.div`
+const StyledFeedMain = styled.div`
   flex-grow: 1;
-  max-width: 750px;
-  width: 100%;
-  height: 100%;
-  padding-bottom: 50px;
+  min-width: 750px;
 
   @media (max-width: ${BREAKPOINTS.xl}) {
     max-width: 550px;
+    min-width: auto;
   }
-
   @media (max-width: ${BREAKPOINTS.md}) {
-    max-width: 750px;
+    width: 100%;
+    max-width: 100%;
   }
 `;
 
-export { StyledUser, StyledPofile };
+export { StyledFeed, StyledFeedMain };

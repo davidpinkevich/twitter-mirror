@@ -6,6 +6,7 @@ import { type TypeTweet } from 'types';
 
 import { SearchTweet } from 'components/SearchTweet';
 import { Sidebar } from 'components/Sidebar';
+import { Burger } from 'components/Sidebar/Burger';
 import { CreateTweet } from 'components/Tweets/CreateTweet';
 import { Tweet } from 'components/Tweets/Tweet';
 import { UserHeader } from 'components/User/UserHeader';
@@ -59,6 +60,7 @@ const Profile: React.FC = () => {
 
   return (
     <StyledPofile>
+      <Burger />
       <Sidebar user={user} uid={uid} addNewTweet={addNewTweet} />
       <StyledUser>
         <UserHeader name={user?.name} targetTweet={targetTweet} setTargetTweet={setTargetTweet} />

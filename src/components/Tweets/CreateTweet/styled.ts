@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from 'constants/index';
+
 const StyledCreateTweet = styled.div`
   border-radius: 6px;
   display: flex;
   gap: 20px;
-  padding: 20px;
+  margin-bottom: 20px;
 `;
 
 const StyledCreateEdit = styled.div`
@@ -41,6 +43,10 @@ const StyledCreateTweetAvatarWrap = styled.div`
   flex-shrink: 0;
   box-shadow: ${(props) => `inset 0px 0px 2px 4px ${props.theme.colors.ligthGray}`};
   background-color: ${(props) => props.theme.colors.mainWhite};
+
+  @media (max-width: ${BREAKPOINTS.md}) {
+    display: none;
+  }
 `;
 
 const StyledCreateTweetAvatar = styled.img`

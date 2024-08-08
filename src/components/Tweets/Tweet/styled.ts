@@ -1,18 +1,29 @@
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from 'constants/index';
+
 const StyledTweet = styled.div`
   border: ${(props) => `1px solid ${props.theme.colors.ligthGray}`};
   display: flex;
   gap: 20px;
   padding: 20px 34px;
+  @media (max-width: ${BREAKPOINTS.lg}) {
+    padding: 10px 18px;
+    gap: 15px;
+  }
 `;
 
 const StyledTweetAvatar = styled.img`
   border-radius: 50%;
   flex-shrink: 0;
+  object-fit: cover;
   box-shadow: ${(props) => `inset 0px 0px 2px 4px ${props.theme.colors.ligthGray}`};
   width: 50px;
   height: 50px;
+  @media (max-width: ${BREAKPOINTS.lg}) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const StyledTweetInfo = styled.div`
@@ -31,6 +42,10 @@ const StyledTweetUser = styled.div`
 const StyledTweetUserName = styled.h2`
   font-size: ${(props) => props.theme.fontSizes.tweet.h2};
   font-weight: 700;
+
+  @media (max-width: ${BREAKPOINTS.md}) {
+    font-size: 16px;
+  }
 `;
 
 const StyledTweetUserP = styled.p`
@@ -40,6 +55,9 @@ const StyledTweetUserP = styled.p`
 const StyledTweetText = styled.p`
   font-size: ${(props) => props.theme.fontSizes.tweet.p};
   width: 100%;
+  @media (max-width: ${BREAKPOINTS.md}) {
+    font-size: 14px;
+  }
 `;
 
 const StyledTweetImage = styled.img`

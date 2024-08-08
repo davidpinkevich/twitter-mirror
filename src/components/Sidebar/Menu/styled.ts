@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from 'constants/index';
 import { ThemeMode } from 'constants/themeMode';
 
 const StyledMenu = styled.div`
@@ -8,6 +9,14 @@ const StyledMenu = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
+
+  @media (max-width: ${BREAKPOINTS.lg}) {
+    font-size: 16px;
+  }
+
+  @media (max-width: ${BREAKPOINTS.md}) {
+    gap: 20px;
+  }
 
   & a {
     color: inherit;
@@ -23,6 +32,9 @@ const StyledMenuUl = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  @media (max-width: ${BREAKPOINTS.md}) {
+    gap: 20px;
+  }
 `;
 
 const StyledMenuItem = styled.li`

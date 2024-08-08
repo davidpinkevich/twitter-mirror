@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from 'constants/index';
 import { ThemeMode } from 'constants/themeMode';
 
 const StyledEditButton = styled.button<{ $themeType: ThemeMode.DARK | ThemeMode.WHITE }>`
   position: absolute;
   top: 300px;
   right: 20px;
+
+  @media (max-width: ${BREAKPOINTS.md}) {
+    top: 135px;
+  }
 
   color: ${(props) =>
     props.$themeType === ThemeMode.WHITE
