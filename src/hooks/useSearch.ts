@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { serviceCollections } from 'services/collections';
 import { getTheme, getUID } from 'data/slices/sliceMemory';
-import { type TypeTweet,type TypeUser } from 'types';
+import { type TypeTweet, type TypeUser } from 'types';
 
 import { useAppSelector } from './useRedux';
 
@@ -56,7 +56,7 @@ const useSearch = (type: string, targetTweet?: TypeTweet | null) => {
     fetchData();
   }, [targetTweet]);
 
-  return { value, setValue, loading, page, setPage, theme, tweets, users, setUsers };
+  return { value, setValue, loading, page, setPage, theme, tweets, setTweets, users, setUsers };
 };
 
 export { useSearch };

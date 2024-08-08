@@ -14,6 +14,10 @@ const StyledMenu = styled.div`
     font-size: 16px;
   }
 
+  @media (max-width: ${BREAKPOINTS.md}) {
+    gap: 20px;
+  }
+
   & a {
     color: inherit;
   }
@@ -28,6 +32,9 @@ const StyledMenuUl = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  @media (max-width: ${BREAKPOINTS.md}) {
+    gap: 20px;
+  }
 `;
 
 const StyledMenuItem = styled.li`

@@ -12,6 +12,7 @@ const StyledPofile = styled.div`
 
   @media (max-width: ${BREAKPOINTS.md}) {
     flex-direction: column-reverse;
+    padding-top: 80px;
   }
 `;
 

@@ -8,8 +8,10 @@ const StyledFeed = styled.div`
   gap: 20px;
   padding: 20px;
   width: 100%;
+
   @media (max-width: ${BREAKPOINTS.md}) {
     flex-direction: column-reverse;
+    padding-top: 80px;
   }
 `;
 

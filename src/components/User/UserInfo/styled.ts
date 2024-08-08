@@ -40,6 +40,9 @@ const StyledUserInfoBackWrapper = styled.div`
   left: 0;
   width: 100%;
   height: 280px;
+  @media (max-width: ${BREAKPOINTS.md}) {
+    display: none;
+  }
 `;
 const StyledUserInfoBack = styled.img`
   position: absolute;
@@ -57,6 +60,11 @@ const StyledUserInfoBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  @media (max-width: ${BREAKPOINTS.md}) {
+    bottom: 0;
+    margin-bottom: 15px;
+  }
 `;
 const StyledUserInfoBlockName = styled.h2`
   font-weight: 700;

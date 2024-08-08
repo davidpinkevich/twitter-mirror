@@ -25,12 +25,13 @@ import {
 } from './styled';
 
 const SearchTweet: React.FC<PropsSearch> = ({ targetTweet, setTargetTweet }) => {
-  const { value, setValue, page, setPage, theme, loading, tweets } = useSearch(
+  const { value, setValue, page, setPage, theme, loading, tweets, setTweets } = useSearch(
     'tweets',
     targetTweet
   );
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setTweets([]);
     setValue(event.target.value);
     setPage(1);
   };

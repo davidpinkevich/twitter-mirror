@@ -25,9 +25,10 @@ import {
 } from '../SearchTweet/styled';
 
 const SearchUser: React.FC<PropsSearchUser> = ({ setTargetUser }) => {
-  const { value, setValue, page, setPage, theme, loading, users } = useSearch('users');
+  const { value, setValue, page, setPage, theme, loading, users, setUsers } = useSearch('users');
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setUsers([]);
     setValue(event.target.value);
     setPage(1);
   };
@@ -76,8 +77,8 @@ const SearchUser: React.FC<PropsSearchUser> = ({ setTargetUser }) => {
         users.length > users.slice(0, page * PAGES.search.value).length && (
           <StyledSearchTweetShow onClick={() => setPage(page + 1)}>Show more</StyledSearchTweetShow>
         )}
-      {!users?.length && !loading && value && (
-        <StyledSearchTweetNF>Tweet not found</StyledSearchTweetNF>
+      {!loading && !users?.length && value && (
+        <StyledSearchTweetNF>User not found</StyledSearchTweetNF>
       )}
     </StyledSearchTweet>
   );

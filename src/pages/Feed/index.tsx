@@ -6,6 +6,7 @@ import { type TypeTweet } from 'types';
 
 import { SearchUser } from 'components/SearchUser';
 import { Sidebar } from 'components/Sidebar';
+import { Burger } from 'components/Sidebar/Burger';
 import { CreateTweet } from 'components/Tweets/CreateTweet';
 import { Tweet } from 'components/Tweets/Tweet';
 import { FeedHeader } from 'components/User/FeedHeader';
@@ -54,6 +55,7 @@ const Feed: React.FC = () => {
 
   return (
     <StyledFeed>
+      <Burger />
       <Sidebar uid={uid} user={user} addNewTweet={addNewTweet} />
       <StyledFeedMain>
         <FeedHeader tweets={tweets} targetUser={targetUser} setTargetUser={setTargetUser} />

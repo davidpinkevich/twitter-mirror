@@ -18,12 +18,15 @@ const StyledUserTitle = styled.div`
   color: inherit;
   font-size: ${(props) => props.theme.fontSizes.signup.title};
   margin-bottom: 20px;
+
+  @media (max-width: ${BREAKPOINTS.md}) {
+    font-size: 20px;
+  }
 `;
 
 const StyledUserModal = styled.div<{ $typeTheme: ThemeMode.DARK | ThemeMode.WHITE }>`
   position: absolute;
   padding: 20px 35px 35px 35px;
-
   width: 450px;
   border: ${(props) => `2px solid ${props.theme.colors.darkGray}`};
   box-shadow: ${(props) => `inset 0px 0px 4px 2px ${props.theme.colors.mainWhite}`};
@@ -36,9 +39,11 @@ const StyledUserModal = styled.div<{ $typeTheme: ThemeMode.DARK | ThemeMode.WHIT
   border-radius: 16px;
 
   @media (max-width: ${BREAKPOINTS.md}) {
+    position: absolute;
     padding: 15px 25px 25px 25px;
-    width: 320px;
-    left: calc(50% - 160px);
+    width: 90%;
+    margin-left: 5%;
+    left: 0;
   }
 `;
 

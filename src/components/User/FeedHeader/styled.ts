@@ -81,10 +81,10 @@ const StyledUserHeaderWrap = styled.div`
 
 export {
   StyledUserHeader,
+  StyledUserHeaderWrap,
   StyledUserHeaderBack,
   StyledUserHeaderBackImg,
   StyledUserHeaderBackText,
-  StyledUserHeaderWrap,
   StyledUserHeaderWrapImg,
   StyledUserHeaderWrapAvatar,
 };
