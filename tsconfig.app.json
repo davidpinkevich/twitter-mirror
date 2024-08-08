@@ -15,25 +15,11 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
-
+    "esModuleInterop": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    "baseUrl": "./src",
-    "paths": {
-      "components/*": ["components/*"],
-      "hooks/*": ["hooks/*"],
-      "assets/*": ["assets/*"],
-      "constants/*": ["constants/*"],
-      "pages/*": ["pages/*"],
-      "styles/*": ["styles/*"],
-      "utils/*": ["utils/*"],
-      "data/*": ["data/*"],
-      "services/*": ["services/*"],
-      "types/*": ["types/*"]
-    }
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
 }
