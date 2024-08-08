@@ -66,7 +66,7 @@ const StyledUserHeaderBackText = styled.p`
   font-weight: 700;
 `;
 
-const StyledUserHeaderWrap = styled.div`
+const StyledUserHeaderBody = styled.div`
   max-width: 750px;
   position: relative;
   padding-bottom: 20px;
@@ -81,7 +81,7 @@ const StyledUserHeaderWrap = styled.div`
 
 export {
   StyledUserHeader,
-  StyledUserHeaderWrap,
+  StyledUserHeaderBody,
   StyledUserHeaderBack,
   StyledUserHeaderBackImg,
   StyledUserHeaderBackText,

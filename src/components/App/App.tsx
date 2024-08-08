@@ -9,6 +9,7 @@ import { Home } from 'pages/Home';
 import { LogIn } from 'pages/LogIn';
 import { Profile } from 'pages/Profile';
 import { SignUp } from 'pages/SignUp';
+import { NotFound } from 'pages/NotFound';
 import { ProtectedRoute } from 'components/ProtectedRoute';
 
 import { StyledApp } from './styled';
@@ -53,6 +54,10 @@ const routes = [
         <Feed />
       </ProtectedRoute>
     ),
+  },
+  {
+    path: '*',
+    element: <NotFound />,
   },
 ];
 

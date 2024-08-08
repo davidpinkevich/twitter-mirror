@@ -14,7 +14,7 @@ import {
   StyledUserHeaderBack,
   StyledUserHeaderBackImg,
   StyledUserHeaderBackText,
-  StyledUserHeaderWrap,
+  StyledUserHeaderBody,
   StyledUserHeaderWrapAvatar,
   StyledUserHeaderWrapImg,
 } from './styled';
@@ -24,7 +24,7 @@ const FeedHeader: React.FC<PropsFeedHeader> = ({ targetUser, tweets, setTargetUs
   const tweet = tweets.filter((item) => item.uid === targetUser)[0];
 
   return (
-    <StyledUserHeaderWrap>
+    <StyledUserHeaderBody>
       <StyledUserHeader>
         {targetUser && (
           <StyledUserHeaderBack onClick={() => setTargetUser('')}>
@@ -44,7 +44,7 @@ const FeedHeader: React.FC<PropsFeedHeader> = ({ targetUser, tweets, setTargetUs
           <StyledUserHeaderWrapAvatar src={tweet?.photo ?? plug} alt="avatar" />
         </>
       )}
-    </StyledUserHeaderWrap>
+    </StyledUserHeaderBody>
   );
 };
 
