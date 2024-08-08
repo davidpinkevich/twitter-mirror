@@ -124,7 +124,7 @@ class CollectionsService {
           name: user.name,
           id: createID(),
           timestamp: Date.now(),
-          photo: user.photo,
+          photo: user?.photo ?? null,
           linkTG: user?.linkTG ?? null,
           image: null,
           likes: [],
